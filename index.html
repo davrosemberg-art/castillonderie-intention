@@ -247,6 +247,21 @@ footer .H{font-size:40px;color:var(--cream);display:block}
 
 .toc a > *{min-width:0;overflow-wrap:anywhere}
 @media (max-width:600px){.toc .H{font-size:24px}}
+/* roi */
+.roi{margin-top:56px;border-top:4px solid var(--ink);padding-top:16px}
+.roi .H.t{font-size:clamp(34px,5vw,72px)}
+.roi .I.t{font-size:clamp(20px,2.4vw,30px);color:var(--ink-2);margin-top:4px}
+.qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:26px;border:4px solid var(--ink)}
+.qs div{padding:18px 18px 22px;border-right:4px solid var(--ink);background:var(--cream);min-width:0}
+.qs div:nth-child(2){background:var(--sun)}
+.qs div:last-child{border-right:0;background:var(--tomato);color:var(--cream)}
+.qs .n{font-family:var(--heavy);font-size:40px;line-height:1}
+.qs p{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:1.1;margin-top:10px}
+@media (max-width:760px){.qs{grid-template-columns:1fr}.qs div{border-right:0;border-bottom:4px solid var(--ink)}.qs div:last-child{border-bottom:0}}
+.kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 20px;margin-top:22px}
+.kpi div{border-top:2px solid var(--ink);padding-top:10px;font-size:15px;color:var(--ink-2);min-width:0}
+.kpi .H{display:block;font-size:22px;color:var(--ink)}
+@media (max-width:760px){.kpi{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
 /* blocs dépliants */
 details.more{margin-top:28px;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)}
 details.more > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0}
@@ -362,6 +377,21 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <div><b>17 km</b><span>Sarlat</span></div>
     <div><b>5 ha</b><span>de chênes et de prairies</span></div>
     <div><b>À pied</b><span>le Thot, espace Cro-Magnon</span></div>
+  </div>
+  <div class="roi">
+    <h2 class="H t">Une communication qui rapporte</h2>
+    <p class="I t">Chaque action est jugée à ce qu'elle rapporte au camping. Trois questions guident tout le reste.</p>
+    <div class="qs">
+      <div><span class="n">1</span><p>Où veut-on emmener le camping en 2027 ?</p></div>
+      <div><span class="n">2</span><p>Où peut-on créer de la marge, sans toucher aux prix ?</p></div>
+      <div><span class="n">3</span><p>Les réservations peuvent-elles tomber plus tôt, et en direct ?</p></div>
+    </div>
+    <div class="kpi">
+      <div><span class="H">Part directe</span>des réservations, face aux allotements</div>
+      <div><span class="H">Date de réservation</span>combien de semaines avant l'arrivée</div>
+      <div><span class="H">Ailes de saison</span>remplissage de mai, juin et septembre</div>
+      <div><span class="H">Panier sur place</span>snack, options, partenaires</div>
+    </div>
   </div>
 </div>
 
@@ -561,7 +591,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
       </tbody>
     </table>
   </div>
-  <div class="total"><span class="small">Le chiffrage se construit après le diagnostic, à partir des chiffres réels du camping.<br>Proposition chiffrée remise après l'atelier.</span><span class="H" style="font-size:clamp(44px,6vw,84px)">Pas à pas.</span></div>
+  <div class="total"><span class="small">Le diagnostic chiffre ces quatre indicateurs et fixe les objectifs de chaque étape.<br>Proposition chiffrée remise après l'atelier.</span><span class="H" style="font-size:clamp(44px,6vw,84px)">Pas à pas.</span></div>
 
   <div class="sig">
     <video src="vid/etang-vu-du-ciel-1.mp4" poster="vid/etang-vu-du-ciel-1.jpg" muted loop playsinline preload="none" data-auto></video>
