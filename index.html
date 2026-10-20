@@ -262,6 +262,20 @@ footer .H{font-size:40px;color:var(--cream);display:block}
 .kpi div{border-top:2px solid var(--ink);padding-top:10px;font-size:15px;color:var(--ink-2);min-width:0}
 .kpi .H{display:block;font-size:22px;color:var(--ink)}
 @media (max-width:760px){.kpi{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+/* équipe et formules */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px;margin-top:26px}
+.team div{border-top:2px solid var(--ink);padding-top:10px;min-width:0}
+.team .H{display:block;font-size:22px}
+.team p{font-size:14.5px;color:var(--ink-2)}
+@media (max-width:760px){.team{grid-template-columns:1fr;gap:12px}}
+.packs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:32px;border:4px solid var(--ink)}
+.pk{padding:20px 20px 24px;border-right:4px solid var(--ink);background:var(--cream);min-width:0;display:flex;flex-direction:column;gap:4px}
+.pk:last-child{border-right:0}
+.pk.reco{background:var(--sun)}
+.pk .H{font-size:clamp(56px,7vw,96px);line-height:.9;margin-top:8px}
+.pk .per{font-family:var(--serif);font-style:italic;font-size:20px}
+.pk p{margin-top:10px;font-size:15px;color:var(--ink-2)}
+@media (max-width:860px){.packs{grid-template-columns:1fr}.pk{border-right:0;border-bottom:4px solid var(--ink)}.pk:last-child{border-bottom:0}}
 /* blocs dépliants */
 details.more{margin-top:28px;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)}
 details.more > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0}
@@ -355,7 +369,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
         <h1 class="H big">La vallée<br>cachée.</h1>
         <p class="I counter">Raconter le lieu, remplir la saison.</p>
         <p class="lede" style="margin-top:22px">Une note d'intention pour préparer 2027 : le récit et les images du camping, la vente en direct, les ventes sur place et une équipe qui crée sa propre matière.</p>
-        <div class="ctas"><a class="b1" href="#offre">Voir la méthode ✶</a><a class="b2" href="#mood">Le mood board</a></div>
+        <div class="ctas"><a class="b1" href="#offre">Voir la proposition ✶</a><a class="b2" href="#mood">Le mood board</a></div>
       </div>
       <ol class="toc">
         <li><a href="#constat"><span class="n">01</span><span class="H">Le constat</span><span class="I">Le produit est là, le récit manque</span></a></li>
@@ -544,7 +558,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <li><span class="H">Site web</span><p>Audit, refonte selon le mood board, connexion au moteur de réservation si l'ensemble des accès est fourni.</p></li>
     <li><span class="H">Territoire</span><p>Sites, prestataires, producteurs et acteurs institutionnels, avec ce que chacun apporte au client et au camping.</p></li>
   </ol>
-  <div class="box"><span class="H">En parallèle</span><p>Un rendez-vous découverte avec une consultante de notre réseau, spécialisée en structuration financière et en financements publics, pour éclairer la trésorerie et les aides mobilisables avant les travaux.</p></div>
+  <div class="box"><span class="H">En parallèle</span><p>L'audit financier, mené par une consultante de l'équipe, éclaire la trésorerie, les économies possibles et les aides mobilisables avant les travaux.</p></div>
 </div></details>
 </div></section>
 
@@ -577,22 +591,34 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 </div></section>
 
 <section class="ch" id="offre" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">09</span><h2 class="H">La méthode</h2><p class="I">Avancer étape par étape, sur des résultats mesurés.</p></div>
-  <p class="lede">Chaque étape se décide séparément, et la suivante ne démarre que si la précédente a fait ses preuves.</p>
+  <div class="head"><span class="num">09</span><h2 class="H">La proposition</h2><p class="I">Une équipe, des étapes, un règlement au mois.</p></div>
+  <p class="lede">On travaille en équipe : chacun intervient sur son métier, au même tarif de 500 € la journée. Chaque module a un objectif mesurable, suivi par les quatre indicateurs.</p>
+  <div class="team">
+    <div><span class="H">Direction créative et stratégie</span><p>David Rosemberg · diagnostic, campagnes, site, formation, pilotage</p></div>
+    <div><span class="H">Audit financier</span><p>Une consultante en structuration financière · trésorerie, économies, financements</p></div>
+    <div><span class="H">Direction artistique</span><p>Une directrice artistique · feed Instagram, gabarits, déclinaisons</p></div>
+  </div>
   <div class="tbl">
     <table>
-      <thead><tr><th>Étape</th><th>Ce que l'on fait</th><th>Ce que le camping y gagne</th><th>Quand</th></tr></thead>
+      <thead><tr><th>Module</th><th>Ce que le camping y gagne</th><th>Temps</th><th>Montant</th></tr></thead>
       <tbody>
-        <tr class="free"><td>Amorçage</td><td>Un mois de prise en main des réseaux sociaux et l'atelier fil rouge</td><td>Un récit commun et des réseaux qui repartent, sans engagement</td><td>Novembre · offert</td></tr>
-        <tr><td>1 · Diagnostic</td><td>Audit des ventes et de la base clients, point zéro de la saison 2026, économies possibles, fil rouge, mood board, cartographie du territoire</td><td>Une base de départ claire, l'argent à redéployer vers le marketing, et les semaines à remplir</td><td>Nov. à déc.</td></tr>
-        <tr><td>2 · Vendre tôt</td><td>Séquence d'e-mails early bird en direct, publications associées</td><td>Des réservations directes et des acomptes encaissés dès l'hiver</td><td>Déc. à mars</td></tr>
-        <tr><td>3 · Le site</td><td>Nouveau site selon le mood board, connecté au moteur de réservation</td><td>Un site qui vend en direct, avec les options dès la réservation</td><td>Janv. à mars</td></tr>
-        <tr><td>4 · La saison</td><td>Ventes additionnelles en ligne et sur place, réseaux, point mensuel</td><td>Un panier moyen plus élevé sans toucher aux prix</td><td>Avril à sept.</td></tr>
-        <tr><td>En continu · Formation</td><td>Binôme avec la personne en charge des réseaux</td><td>Une équipe autonome qui crée sa propre matière</td><td>6 mois</td></tr>
+        <tr class="free"><td>Amorçage</td><td>Un mois de réseaux sociaux et l'atelier fil rouge, en novembre. Valeur 500 €</td><td>1 j</td><td>Offert</td></tr>
+        <tr><td>Diagnostic</td><td>Le point zéro 2026, les semaines à remplir, le plan d'action 2027</td><td>3 j</td><td>1 500 €</td></tr>
+        <tr><td>Audit financier</td><td>Les économies à redéployer vers le marketing, les aides mobilisables</td><td>2 j</td><td>1 000 €</td></tr>
+        <tr><td>Vendre tôt</td><td>La campagne early bird en direct : e-mails, visuels, relances</td><td>3 j</td><td>1 500 €</td></tr>
+        <tr><td>Feed Instagram</td><td>La refonte du compte et les gabarits du social wall</td><td>3 j</td><td>1 500 €</td></tr>
+        <tr><td>Formation</td><td>Six mois de binôme avec la personne en charge des réseaux</td><td>½ j / mois</td><td>1 500 €</td></tr>
+        <tr><td>Site web</td><td>Un site qui vend en direct, connecté au moteur de réservation</td><td>4 j</td><td>2 000 €</td></tr>
+        <tr><td>Pilotage saison</td><td>Ventes additionnelles et réseaux, d'avril à juin</td><td>1 j / mois</td><td>500 € / mois</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="total"><span class="small">Le diagnostic chiffre ces quatre indicateurs et fixe les objectifs de chaque étape.<br>Proposition chiffrée remise après l'atelier.</span><span class="H" style="font-size:clamp(44px,6vw,84px)">Pas à pas.</span></div>
+  <div class="packs">
+    <div class="pk"><span class="lab">Démarrage</span><span class="H">500 €</span><span class="per">par mois, de décembre à avril</span><p>Diagnostic et audit financier. 2 500 € au total. On sait où on va et comment le financer.</p></div>
+    <div class="pk reco"><span class="lab">Saison 2027 · recommandé</span><span class="H">583 €</span><span class="per">par mois, sur 12 mois</span><p>Démarrage, vendre tôt, feed Instagram et formation. 7 000 € au total. Le camping vend plus tôt et produit sa propre matière.</p></div>
+    <div class="pk"><span class="lab">Complet</span><span class="H">875 €</span><span class="per">par mois, sur 12 mois</span><p>Saison 2027, site web et pilotage d'avril à juin. 10 500 € au total. Tout le dispositif, de l'hiver à l'été.</p></div>
+  </div>
+  <p class="small" style="margin-top:14px">Montants hors taxes. Les économies repérées par l'audit financier ont vocation à couvrir une partie de l'investissement. Le seuil de rentabilité, en semaines vendues en direct, est calculé à la restitution du diagnostic.</p>
 
   <div class="sig">
     <video src="vid/etang-vu-du-ciel-1.mp4" poster="vid/etang-vu-du-ciel-1.jpg" muted loop playsinline preload="none" data-auto></video>
