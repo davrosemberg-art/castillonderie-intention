@@ -389,6 +389,19 @@ html.locked .gate{display:grid}
 .key p{font-size:14.5px;color:var(--ink-2);margin-top:4px}
 @media (max-width:860px){.key{grid-template-columns:repeat(2,minmax(0,1fr))}.key div{border-bottom:4px solid var(--ink)}}
 .end{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+.sim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;margin-top:28px;border:4px solid var(--ink)}
+@media (max-width:860px){.sim{grid-template-columns:1fr}}
+.sim .in{padding:20px 22px;background:var(--cream);border-right:4px solid var(--ink);display:grid;gap:16px;min-width:0}
+@media (max-width:860px){.sim .in{border-right:0;border-bottom:4px solid var(--ink)}}
+.sim label{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;font-size:15px}
+.sim label b{font-family:var(--heavy);font-weight:400;font-size:24px;font-variant-numeric:tabular-nums}
+.sim input[type=range]{grid-column:1/-1;width:100%;accent-color:#e0482b}
+.sim .out{padding:20px 22px;background:var(--sun);display:flex;flex-direction:column;gap:6px;min-width:0}
+.sim .out .big{font-family:var(--heavy);font-size:clamp(64px,9vw,120px);line-height:.9;font-variant-numeric:tabular-nums}
+.sim .out .I{font-size:22px}
+.sim .out .rows{margin-top:auto;border-top:2px solid var(--ink)}
+.sim .out .rows div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:2px solid var(--ink);font-size:15px}
+.sim .out .rows b{font-family:var(--heavy);font-weight:400;font-size:20px;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -486,8 +499,40 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
   </div>
 </div></section>
 
+<section class="ch" id="chiffres" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">04</span><h2 class="H">Ce que ça peut rapporter</h2><p class="I">Une hypothèse simple, à vérifier avec les chiffres du camping.</p></div>
+  <p class="lede">Faites varier les hypothèses : la marge se calcule toute seule. Les valeurs de départ sont des ordres de grandeur, pas des engagements.</p>
+  <div class="sim" id="sim">
+    <div class="in">
+      <label for="s-freq">Vacanciers sur la saison <b id="v-freq"></b><input id="s-freq" type="range" min="500" max="10000" step="100" value="3000"></label>
+      <label for="s-rate">Part qui achète une pièce <b id="v-rate"></b><input id="s-rate" type="range" min="1" max="30" step="1" value="10"></label>
+      <label for="s-price">Prix de vente <b id="v-price"></b><input id="s-price" type="range" min="10" max="60" step="1" value="25"></label>
+      <label for="s-cost">Coût d'achat de la pièce <b id="v-cost"></b><input id="s-cost" type="range" min="3" max="30" step="1" value="10"></label>
+    </div>
+    <div class="out" aria-live="polite">
+      <span class="lab">Marge sur la saison</span>
+      <span class="big" id="o-margin"></span>
+      <span class="I" id="o-sent"></span>
+      <div class="rows">
+        <div><span>Pièces vendues</span><b id="o-units"></b></div>
+        <div><span>Chiffre d'affaires</span><b id="o-ca"></b></div>
+        <div><span>Marge par pièce</span><b id="o-unit"></b></div>
+      </div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:12px">Hors frais de vente en ligne et de présentoir. Chaque nouvelle édition s'ajoute à la précédente : les fidèles complètent leur collection d'une année sur l'autre.</p>
+</div></section>
+<script>(function(){var f=function(n){return Math.round(n).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g,' ')};
+var g=function(i){return document.getElementById(i)};
+function run(){var fr=+g('s-freq').value,r=+g('s-rate').value,pr=+g('s-price').value,c=+g('s-cost').value;
+var u=Math.round(fr*r/100),m=Math.max(pr-c,0);
+g('v-freq').textContent=f(fr);g('v-rate').textContent=r+' %';g('v-price').textContent=pr+' €';g('v-cost').textContent=c+' €';
+g('o-units').textContent=f(u);g('o-ca').textContent=f(u*pr)+' €';g('o-unit').textContent=f(m)+' €';g('o-margin').textContent=f(u*m)+' €';
+g('o-sent').textContent='Soit '+f(u)+' pièces vendues sur '+f(fr)+' vacanciers.';}
+['s-freq','s-rate','s-price','s-cost'].forEach(function(i){g(i).addEventListener('input',run)});run();})();</script>
+
 <section class="ch" id="cle-en-main" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">04</span><h2 class="H">Clé en main</h2><p class="I">Le camping n'a rien à gérer, sinon à la proposer.</p></div>
+  <div class="head"><span class="num">05</span><h2 class="H">Clé en main</h2><p class="I">Le camping n'a rien à gérer, sinon à la proposer.</p></div>
   <div class="key">
     <div><span class="H">Création</span><p>Logo, couleurs de l'édition, dessin des pièces.</p></div>
     <div><span class="H">Production</span><p>Fabrication en petite série ou à la demande, sans stock à porter.</p></div>
