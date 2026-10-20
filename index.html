@@ -276,6 +276,30 @@ footer .H{font-size:40px;color:var(--cream);display:block}
 .pk .per{font-family:var(--serif);font-style:italic;font-size:20px}
 .pk p{margin-top:10px;font-size:15px;color:var(--ink-2)}
 @media (max-width:860px){.packs{grid-template-columns:1fr}.pk{border-right:0;border-bottom:4px solid var(--ink)}.pk:last-child{border-bottom:0}}
+/* vision collection */
+.vision{background:var(--ink);color:var(--cream);margin-top:56px}
+.vision .wrap{padding-block:clamp(48px,7vw,88px)}
+.vision .eyebrow-l{font-family:var(--heavy);text-transform:uppercase;letter-spacing:.08em;color:var(--sun);font-size:15px}
+.vision h2{font-size:clamp(48px,7.5vw,112px);margin-top:10px}
+.vision .I.sub{font-size:clamp(22px,2.8vw,36px);color:#d9d3b8;margin-top:6px;max-width:30ch;line-height:1.1}
+.vgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:start;margin-top:36px}
+@media (max-width:900px){.vgrid{grid-template-columns:1fr}}
+.vlist div{border-top:2px solid var(--cream);padding:14px 0 16px}
+.vlist .H{font-size:clamp(24px,2.6vw,32px);display:block}
+.vlist p{font-size:15.5px;color:#d9d3b8;margin-top:4px}
+.merch{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:14px}
+@media (max-width:520px){.merch{grid-template-columns:1fr}}
+.prod{margin:0;border:3px solid var(--cream);background:#e9e2c6;position:relative;display:flex;flex-direction:column}
+.prod.cap{background:#d6e5bf}
+.prod svg{width:100%;height:auto;display:block}
+.prod figcaption{background:var(--cream);color:var(--ink);padding:10px 12px;border-top:3px solid var(--ink);margin-top:auto}
+.prod figcaption .H{font-size:20px;display:block}
+.prod figcaption span.d{font-size:13.5px;color:var(--ink-2)}
+.prod .ed{position:absolute;top:10px;left:10px;background:var(--tomato);color:var(--cream);font-family:var(--heavy);text-transform:uppercase;font-size:12px;letter-spacing:.06em;padding:4px 8px}
+.years{display:flex;margin-top:14px;border:3px solid var(--cream)}
+.years div{flex:1;padding:8px 10px;border-right:3px solid var(--cream);font-family:var(--heavy);font-size:15px;letter-spacing:.04em;min-width:0}
+.years div:last-child{border-right:0}
+.years div b{display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:15px;letter-spacing:0;color:inherit}
 /* blocs dépliants */
 details.more{margin-top:28px;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)}
 details.more > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0}
@@ -392,6 +416,49 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <div><b>5 ha</b><span>de chênes et de prairies</span></div>
     <div><b>À pied</b><span>le Thot, espace Cro-Magnon</span></div>
   </div>
+</div>
+<section class="vision" aria-label="La vision">
+  <div class="wrap">
+    <span class="eyebrow-l">La vision · une marque, pas seulement un camping</span>
+    <h2 class="H">Un lieu qu'on emporte.</h2>
+    <p class="I sub">L'attachement se crée pendant le séjour. La communication le prolonge, et la marge suit.</p>
+    <div class="vgrid">
+      <div class="vlist">
+        <div><span class="H">L'attachement</span><p>Un récit, des images et des rendez-vous qui donnent envie de revenir, et d'en parler.</p></div>
+        <div><span class="H">L'achat émotionnel</span><p>Avant l'arrivée, les options. Sur place, la table, les partenaires, la collection. Après, la carte cadeau et la réservation de l'année suivante.</p></div>
+        <div><span class="H">Un seul parcours</span><p>Maeva, le site, la boutique et la réservation directe racontent la même histoire et se renvoient les uns aux autres.</p></div>
+      </div>
+      <div>
+        <div class="merch">
+          <figure class="prod"><span class="ed">Collection 01</span><svg viewBox="0 0 300 300" role="img" aria-label="T-shirt oversize ocre, logo tente brodé sur la poitrine">
+  <path d="M100 34 C118 50 182 50 200 34 L268 58 L296 138 L246 152 L240 122 L242 286 L58 286 L60 122 L54 152 L4 138 L32 58 Z" fill="#c07a33" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M100 34 C116 62 184 62 200 34" fill="none" stroke="#1c1d19" stroke-width="3"/>
+  <path d="M106 40 C122 58 178 58 194 40" fill="none" stroke="#8f5420" stroke-width="2"/>
+  <path d="M60 122 L58 160 M240 122 L242 160" stroke="#8f5420" stroke-width="2" fill="none"/>
+  <g transform="translate(174 92)"><g fill="none" stroke="#f6f0d6" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M0 22 L14 2 L28 22 Z"/><path d="M14 2 L14 22"/><path d="M9 22 L14 13 L19 22"/><path d="M-3 22 H31"/></g></g>
+  <text x="150" y="226" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="11" letter-spacing="1.2" fill="#f6f0d6">LA CASTILLONDERIE</text><text x="150" y="242" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="9" letter-spacing="1.6" fill="#f6f0d6">ÉDITION 2027</text>
+</svg><figcaption><span class="H">Le t-shirt oversize</span><span class="d">Coton épais, coupe ample, tente brodée sur le cœur.</span></figcaption></figure>
+          <figure class="prod cap"><span class="ed">Édition 2027</span><svg viewBox="0 0 300 300" role="img" aria-label="Casquette en coton vert chêne, logo tente brodé">
+  <path d="M46 186 C40 104 98 66 160 68 C222 70 258 120 256 186 Z" fill="#2b3a2a" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M160 68 C150 110 150 150 156 186 M160 68 C200 96 222 140 226 186" fill="none" stroke="#1c1d19" stroke-width="2"/>
+  <path d="M150 186 L296 186 C292 212 226 220 150 202 Z" fill="#24301f" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="160" cy="67" r="6" fill="#2b3a2a" stroke="#1c1d19" stroke-width="2.5"/>
+  <path d="M60 176 L92 176" stroke="#c07a33" stroke-width="5" stroke-linecap="round"/>
+  <g transform="translate(176 120)"><g fill="none" stroke="#f6f0d6" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M0 22 L14 2 L28 22 Z"/><path d="M14 2 L14 22"/><path d="M9 22 L14 13 L19 22"/><path d="M-3 22 H31"/></g></g>
+</svg><figcaption><span class="H">La casquette</span><span class="d">Coton lavé, la tente brodée en façade.</span></figcaption></figure>
+        </div>
+        <div class="years" aria-label="Une couleur par édition">
+          <div style="background:#c07a33">2027<b>Ocre</b></div>
+          <div style="background:#2b3a2a">2028<b>Vert chêne</b></div>
+          <div style="background:#e9e2c6;color:#1c1d19">2029<b>Calcaire</b></div>
+          <div style="background:#e0482b">2030<b>Rouge</b></div>
+        </div>
+        <p class="I" style="margin-top:12px;font-size:21px;color:#d9d3b8">Un objet de collection qui change chaque année : on revient aussi pour la nouvelle édition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wrap">
   <div class="roi">
     <h2 class="H t">Une communication qui rapporte</h2>
     <p class="I t">Chaque action est jugée à ce qu'elle rapporte au camping. Trois questions guident tout le reste.</p>
