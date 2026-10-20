@@ -244,11 +244,37 @@ tr.free td:last-child{color:var(--tomato)}
 footer{background:var(--ink);color:#d9d3b8;font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-block:36px}
 footer .H{font-size:40px;color:var(--cream);display:block}
+
+/* écran de code */
+html.locked .beta,html.locked .mast,html.locked main,html.locked footer{display:none}
+.gate{display:none;min-height:100vh;place-items:center;padding-block:40px}
+html.locked .gate{display:grid}
+.gate form{width:min(440px,100%);border-top:4px solid var(--ink);padding-top:18px}
+.gate .H{font-size:clamp(48px,12vw,84px)}
+.gate .I{font-size:26px;margin-top:4px}
+.gate label{display:block;margin-top:28px;font-size:15px}
+.gate .row{display:flex;gap:10px;margin-top:8px}
+.gate input{flex:1;min-width:0;font:inherit;font-size:18px;padding:12px 14px;border:3px solid var(--ink);background:var(--cream);color:var(--ink)}
+.gate button{font-family:var(--heavy);text-transform:uppercase;letter-spacing:.05em;font-size:18px;padding:12px 20px;border:3px solid var(--ink);background:var(--ink);color:var(--cream);cursor:pointer}
+.gate .err{min-height:1.5em;margin-top:10px;color:var(--tomato);font-weight:600;font-size:15px}
 </style>
 </head>
 <body>
 
 
+<script>try{if(sessionStorage.getItem('cast-ok')!=='1')document.documentElement.classList.add('locked')}catch(e){document.documentElement.classList.add('locked')}</script>
+<div class="gate wrap"><form id="gate-form" autocomplete="off">
+  <div class="H">Castillonderie</div>
+  <p class="I">Note d'intention · saison 2027</p>
+  <label for="gate-code">Saisissez le code d'accès qui vous a été transmis.</label>
+  <div class="row"><input id="gate-code" type="password" inputmode="text" autocapitalize="off" spellcheck="false"><button type="submit">Entrer</button></div>
+  <p class="err" id="gate-err" role="alert"></p>
+</form></div>
+<script>(function(){var H='d4d54d627d461f062e6f0074df9caec9bcac4911c990933cb9be41f08a071575';var f=document.getElementById('gate-form');if(!f)return;
+f.addEventListener('submit',function(ev){ev.preventDefault();var v=document.getElementById('gate-code').value.trim().toLowerCase();
+var done=function(x){if(x===H){try{sessionStorage.setItem('cast-ok','1')}catch(e){}document.documentElement.classList.remove('locked');window.scrollTo(0,0);if(window.__fit)window.__fit();}else{document.getElementById('gate-err').textContent="Ce code ne correspond pas. Vérifiez-le et réessayez.";}};
+if(!(window.crypto&&crypto.subtle)){done(null);return;}
+crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){done(Array.from(new Uint8Array(b)).map(function(n){return n.toString(16).padStart(2,'0')}).join(''))});});})();</script>
 <div class="beta"><div class="wrap"><span class="lab">Maquette bêta · non publiée</span><span>Note d'intention préparée par David Rosemberg pour l'atelier du 21 octobre 2026</span></div></div>
 
 <header class="mast"><div class="wrap">
@@ -509,7 +535,7 @@ footer .H{font-size:40px;color:var(--cream);display:block}
 <script>
 (function(){
   function fit(){var w=document.querySelector('.word');if(!w)return;w.style.fontSize='100px';var box=w.parentElement.clientWidth;var nat=w.scrollWidth;if(nat>0)w.style.fontSize=Math.min(box/nat*100*0.99,190)+'px';}
-  fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('resize',fit);
+  window.__fit=fit;fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('resize',fit);
 })();
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
