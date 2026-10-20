@@ -263,7 +263,7 @@ footer .H{font-size:40px;color:var(--cream);display:block}
 .kpi .H{display:block;font-size:22px;color:var(--ink)}
 @media (max-width:760px){.kpi{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
 /* équipe et formules */
-.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px;margin-top:26px}
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin-top:26px}
 .team div{border-top:2px solid var(--ink);padding-top:10px;min-width:0}
 .team .H{display:block;font-size:22px}
 .team p{font-size:14.5px;color:var(--ink-2)}
@@ -625,7 +625,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <li><span class="H">Site web</span><p>Audit, refonte selon le mood board, connexion au moteur de réservation si l'ensemble des accès est fourni.</p></li>
     <li><span class="H">Territoire</span><p>Sites, prestataires, producteurs et acteurs institutionnels, avec ce que chacun apporte au client et au camping.</p></li>
   </ol>
-  <div class="box"><span class="H">En parallèle</span><p>L'audit financier, mené par une consultante de l'équipe, éclaire la trésorerie, les économies possibles et les aides mobilisables avant les travaux.</p></div>
+  <div class="box"><span class="H">En parallèle</span><p>Un rendez-vous découverte avec une consultante en structuration financière de notre réseau, pour éclairer la trésorerie et les aides mobilisables avant les travaux.</p></div>
 </div></details>
 </div></section>
 
@@ -662,7 +662,6 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
   <p class="lede">On travaille en équipe : chacun intervient sur son métier, au même tarif de 500 € la journée. Chaque module a un objectif mesurable, suivi par les quatre indicateurs.</p>
   <div class="team">
     <div><span class="H">Direction créative et stratégie</span><p>David Rosemberg · diagnostic, campagnes, site, formation, pilotage</p></div>
-    <div><span class="H">Audit financier</span><p>Une consultante en structuration financière · trésorerie, économies, financements</p></div>
     <div><span class="H">Direction artistique</span><p>Une directrice artistique · feed Instagram, gabarits, déclinaisons</p></div>
   </div>
   <div class="tbl">
@@ -671,7 +670,6 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
       <tbody>
         <tr class="free"><td>Amorçage</td><td>Un mois de réseaux sociaux et l'atelier fil rouge, en novembre. Valeur 500 €</td><td>1 j</td><td>Offert</td></tr>
         <tr><td>Diagnostic</td><td>Le point zéro 2026, les semaines à remplir, le plan d'action 2027</td><td>3 j</td><td>1 500 €</td></tr>
-        <tr><td>Audit financier</td><td>Les économies à redéployer vers le marketing, les aides mobilisables</td><td>2 j</td><td>1 000 €</td></tr>
         <tr><td>Vendre tôt</td><td>La campagne early bird en direct : e-mails, visuels, relances</td><td>3 j</td><td>1 500 €</td></tr>
         <tr><td>Feed Instagram</td><td>La refonte du compte et les gabarits du social wall</td><td>3 j</td><td>1 500 €</td></tr>
         <tr><td>Formation</td><td>Six mois de binôme avec la personne en charge des réseaux</td><td>½ j / mois</td><td>1 500 €</td></tr>
@@ -681,11 +679,12 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     </table>
   </div>
   <div class="packs">
-    <div class="pk"><span class="lab">Démarrage</span><span class="H">500 €</span><span class="per">par mois, de décembre à avril</span><p>Diagnostic et audit financier. 2 500 € au total. On sait où on va et comment le financer.</p></div>
-    <div class="pk reco"><span class="lab">Saison 2027 · recommandé</span><span class="H">583 €</span><span class="per">par mois, sur 12 mois</span><p>Démarrage, vendre tôt, feed Instagram et formation. 7 000 € au total. Le camping vend plus tôt et produit sa propre matière.</p></div>
-    <div class="pk"><span class="lab">Complet</span><span class="H">875 €</span><span class="per">par mois, sur 12 mois</span><p>Saison 2027, site web et pilotage d'avril à juin. 10 500 € au total. Tout le dispositif, de l'hiver à l'été.</p></div>
+    <div class="pk"><span class="lab">Démarrage</span><span class="H">500 €</span><span class="per">par mois, de décembre à février</span><p>Le diagnostic. 1 500 € au total. On sait d'où on part et où on va.</p></div>
+    <div class="pk reco"><span class="lab">Saison 2027 · recommandé</span><span class="H">500 €</span><span class="per">par mois, sur 12 mois</span><p>Diagnostic, vendre tôt, feed Instagram et formation. 6 000 € au total. Le camping vend plus tôt et produit sa propre matière.</p></div>
+    <div class="pk"><span class="lab">Complet</span><span class="H">792 €</span><span class="per">par mois, sur 12 mois</span><p>Saison 2027, site web et pilotage d'avril à juin. 9 500 € au total. Tout le dispositif, de l'hiver à l'été.</p></div>
   </div>
-  <p class="small" style="margin-top:14px">Montants hors taxes. Les économies repérées par l'audit financier ont vocation à couvrir une partie de l'investissement. Le seuil de rentabilité, en semaines vendues en direct, est calculé à la restitution du diagnostic.</p>
+  <p class="small" style="margin-top:14px">Montants hors taxes, mensualités arrondies. Les économies repérées pendant le diagnostic ont vocation à couvrir une partie de l'investissement. Le seuil de rentabilité, en semaines vendues en direct, est calculé à la restitution du diagnostic.</p>
+  <div class="box" style="margin-top:22px"><span class="H">Fortement recommandé</span><p>Un rendez-vous découverte avec une consultante en structuration financière de notre réseau, pour faire le point sur la trésorerie, les économies possibles et les financements mobilisables avant les travaux. Ses conditions d'accompagnement sont définies à l'issue de ce premier échange.</p></div>
 
   <div class="sig">
     <video src="vid/etang-vu-du-ciel-1.mp4" poster="vid/etang-vu-du-ciel-1.jpg" muted loop playsinline preload="none" data-auto></video>
