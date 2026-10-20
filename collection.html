@@ -418,6 +418,25 @@ html.locked .gate{display:grid}
 .libnotes div{border-top:2px solid var(--ink);padding:10px 0 12px}
 .libnotes .H{display:block;font-size:22px}
 .libnotes p{font-size:15px;color:var(--ink-2)}
+.eds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
+@media (max-width:900px){.eds{grid-template-columns:1fr}}
+.ed3{border:4px solid var(--ink);background:var(--cream);display:flex;flex-direction:column;min-width:0}
+.ed3 .vis{border-bottom:4px solid var(--ink);background:#fff;aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}
+.ed3 .vis svg{width:100%;height:100%;display:block}
+.ed3 .t{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px}
+.ed3 .lab{color:var(--tomato)}
+.ed3 .H{font-size:28px}
+.ed3 p{font-size:15px;color:var(--ink-2)}
+.ed3.bd{grid-column:1/-1}
+.ed3.bd .vis{aspect-ratio:auto;background:var(--sun)}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:14px;width:100%}
+@media (max-width:600px){.strip{grid-template-columns:1fr}}
+.panel{border:3px solid var(--ink);background:#fff;display:flex;flex-direction:column;min-width:0}
+.panel svg{width:100%;height:auto;display:block}
+.panel .bub{border-top:3px solid var(--ink);padding:8px 10px;font-family:var(--heavy);text-transform:uppercase;font-size:15px;letter-spacing:.02em;line-height:1.05}
+.preface{padding:22px 22px 18px;display:flex;flex-direction:column;justify-content:center;height:100%;background:var(--cream)}
+.preface .q{color:inherit;font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.1vw,26px);line-height:1.15}
+.preface .s{margin-top:12px;font-family:var(--heavy);text-transform:uppercase;font-size:12px;letter-spacing:.08em}
 .nope{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
 .nope .lab{margin-right:6px}
 .nope span.x{border:2px solid var(--ink);padding:4px 10px;font-size:14px;text-decoration:line-through;text-decoration-color:var(--tomato);text-decoration-thickness:2px}
@@ -542,7 +561,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 </div></section>
 
 <section class="ch" id="bibliotheque" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">03</span><h2 class="H">La bibliothèque</h2><p class="I">Le temps long, en vrai : des classiques à lire au bord de l'eau.</p></div>
+  <div class="head"><span class="num">03</span><h2 class="H">Les éditions du camping</h2><p class="I">Le temps long, en vrai : lire, dessiner, se raconter.</p></div>
   <div class="lib">
     <figure style="margin:0">
       <div class="frame"><img src="img/p06771.jpg" alt="Une vacancière lit au bord de la piscine" loading="lazy"></div>
@@ -553,10 +572,20 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
       <div class="libnotes">
         <div><span class="H">Une étagère en libre accès</span><p>À l'accueil et près de la piscine : on emprunte, on lit, on repose. Un geste simple qui dit tout de l'esprit du lieu.</p></div>
         <div><span class="H">Des classiques choisis pour la vallée</span><p>Montaigne et Eugène Le Roy pour le Périgord, Jules Verne pour la Préhistoire, Rousseau pour la marche, La Fontaine pour les enfants.</p></div>
-        <div><span class="H">Les éditions du camping</span><p>Couverture aux couleurs de l'édition, une photo du reportage à l'intérieur, imprimées à la demande avec notre partenaire d'impression. Le livre se prête sur place et se vend pour l'emporter.</p></div>
+        <div><span class="H">Imprimées pour le camping</span><p>Couverture aux couleurs de l'édition, une préface qui raconte la démarche, des photos du reportage à l'intérieur, imprimées à la demande. Le livre se prête sur place et se vend pour l'emporter.</p></div>
         <div><span class="H">Sur les réseaux</span><p>« Lu au bord de l'étang » : un rendez-vous régulier du social wall, qui donne au compte un ton à part.</p></div>
       </div>
     </div>
+  </div>
+  <div class="eds">
+    <div class="ed3"><div class="vis"><div class="preface"><p class="q">« Ici, on prend le temps. Ces livres sont faits pour être lus au bord de l'eau, à l'ombre d'un chêne, puis emportés. »</p><span class="s">Extrait de la préface · édition 2027</span></div></div><div class="t"><span class="lab">Format 01</span><span class="H">Les classiques</span><p>Six textes choisis pour la vallée, ouverts par une préface qui explique la démarche : un camping qui fait aussi de la culture.</p></div></div>
+    <div class="ed3"><div class="vis"><svg viewBox="0 0 240 180" role="img" aria-label="Page de carnet à colorier : tentes, chênes et étang en traits"><rect x="0" y="0" width="240" height="180" fill="#fff"/><path d="M20 140 L55 80 L90 140 Z M48 140 L55 118 L62 140" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M110 140 L140 92 L170 140 Z" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="200" cy="70" r="26" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M200 96 v44" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="30" cy="50" r="18" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M30 68 v20" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M8 160 c30-8 60 8 90 0 s60-8 90 0 s30 4 44 0" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M150 30 c6-6 12-6 18 0 c6-6 12-6 18 0" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="t"><span class="lab">Format 02</span><span class="H">Le carnet à colorier</span><p>Tentes, chênes, étang, animaux de la vallée : un carnet à dessiner et à colorier, pour les petits comme pour les grands.</p></div></div>
+    <div class="ed3"><div class="vis" style="background:var(--tomato)"><div class="preface" style="background:var(--tomato);color:var(--cream)"><p class="q">Chaque saison, un nouvel album. Les vacanciers deviennent les héros, avec leur accord.</p><span class="s">Un dessinateur de bande dessinée associé</span></div></div><div class="t"><span class="lab">Format 03</span><span class="H">La BD du camping</span><p>Les aventures des vacanciers de la Castillonderie, dessinées par un auteur de bande dessinée. Une signature que personne d'autre n'a.</p></div></div>
+    <div class="ed3 bd"><div class="vis"><div class="strip">
+      <div class="panel"><svg viewBox="0 0 240 150" role="img" aria-label="Case 1 : une tente au lever du soleil, un sac de pain devant"><circle cx="190" cy="40" r="18" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M190 12v-8M214 22l6-5M218 40h8" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M50 120 L95 50 L140 120 Z" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M85 120 L95 92 L105 120" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 120 H225" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M150 120 v-18 h22 v18 M150 104 c4-8 18-8 22 0" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M30 120 c0-30 10-50 14-60 c4 10 14 30 14 60" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="bub">7 h 30. Le pain est devant la tente.</span></div>
+      <div class="panel"><svg viewBox="0 0 240 150" role="img" aria-label="Case 2 : un pêcheur au bord de l'étang"><path d="M10 112 c40-10 80 10 120 0 s80-10 100 0" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 128 c30-6 60 6 90 0" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="60" cy="58" r="10" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M60 68 v28 M60 96 l-12 18 M60 96 l12 18 M60 76 l20 -8" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M80 68 L170 30" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M170 30 Q178 70 175 108" fill="none" stroke="#1c1d19" stroke-width="1.6"/><path d="M168 108 c6 -6 14 -6 18 0 c-4 6 -12 6 -18 0 z M186 108 l8 -5 v10 z" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="bub">10 h. Premier poisson… presque.</span></div>
+      <div class="panel"><svg viewBox="0 0 240 150" role="img" aria-label="Case 3 : une famille dans la piscine refuse de sortir"><rect x="20" y="78" width="200" height="52" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M30 96 c15-6 30 6 45 0 s30-6 45 0 s30 6 45 0 s25-6 45 0" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="80" cy="74" r="10" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="120" cy="70" r="12" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="158" cy="76" r="8" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M196 78 v-40 M212 78 v-40 M196 50 h16 M196 64 h16" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M30 40 h70 v22 h-52 l-10 10 v-10 h-8 z" fill="none" stroke="#1c1d19" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="bub">17 h. Personne ne veut sortir.</span></div>
+    </div></div><div class="t"><span class="lab">Esquisse d'intention · les aventures des vacanciers</span><p>Une planche par moment fort de la journée. Le ton : tendre, drôle, juste. Les cases nourrissent aussi le social wall et les e-mails.</p></div></div>
   </div>
 </div></section>
 
