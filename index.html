@@ -305,6 +305,8 @@ footer .H{font-size:40px;color:var(--cream);display:block}
 .teaser .H{font-size:clamp(32px,4vw,52px)}
 .teaser .I{font-size:clamp(18px,2vw,24px);color:#d9d3b8}
 .teaser:hover .H{color:var(--sun)}
+.toc li.toc-col{background:var(--sun);border-top:4px solid var(--ink);padding:14px 12px 16px;margin-top:4px}
+.toc li.toc-col .n{color:var(--ink)}
 /* blocs dépliants */
 details.more{margin-top:28px;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)}
 details.more > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0}
@@ -398,13 +400,14 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
         <h1 class="H big">La vallée<br>cachée.</h1>
         <p class="I counter">Raconter le lieu, remplir la saison.</p>
         <p class="lede" style="margin-top:22px">Une note d'intention pour préparer 2027 : le récit et les images du camping, la vente en direct, les ventes sur place et une équipe qui crée sa propre matière.</p>
-        <div class="ctas"><a class="b1" href="#offre">Voir la proposition ✶</a><a class="b2" href="#mood">Le mood board</a></div>
+        <div class="ctas"><a class="b1" href="#offre">Voir la proposition ✶</a><a class="b2" href="collection.html">La collection ✶</a></div>
       </div>
       <ol class="toc">
         <li><a href="#constat"><span class="n">01</span><span class="H">Le constat</span><span class="I">Le produit est là, le récit manque</span></a></li>
         <li><a href="#fil-rouge"><span class="n">02</span><span class="H">Le fil rouge</span><span class="I">Faire de l'isolement une promesse</span></a></li>
         <li><a href="#mood"><span class="n">03</span><span class="H">Le mood board</span><span class="I">Un seul langage, du site aux réseaux</span></a></li>
         <li><a href="#chantiers"><span class="n">06</span><span class="H">L'accompagnement</span><span class="I">Vendre tôt, puis mieux sur place</span></a></li>
+        <li class="toc-col"><a href="collection.html"><span class="n">✶</span><span class="H">La collection</span><span class="I">Un lieu qu'on emporte : objets, bibliothèque, marge</span></a></li>
       </ol>
     </div>
   </div>
