@@ -404,6 +404,20 @@ html.locked .gate{display:grid}
 .fam li b{font-family:var(--heavy);font-weight:400;text-transform:uppercase;font-size:19px;letter-spacing:.02em;display:block}
 .fam li span{font-size:14.5px;color:var(--ink-2)}
 .fam li.star b::after{content:" ✶";color:var(--tomato)}
+.lib{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);margin-top:28px;align-items:start}
+@media (max-width:900px){.lib{grid-template-columns:1fr}}
+.lib .frame{aspect-ratio:4/5}
+.shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:520px){.shelf{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.bk{aspect-ratio:2/3;border:3px solid var(--ink);padding:12px 10px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;box-shadow:6px 6px 0 var(--ink)}
+.bk .a{font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.1}
+.bk .t{font-family:var(--heavy);text-transform:uppercase;font-size:clamp(17px,1.9vw,24px);line-height:.95;overflow-wrap:anywhere}
+.bk .e{font-family:var(--heavy);text-transform:uppercase;font-size:10px;letter-spacing:.08em;display:flex;align-items:center;gap:6px}
+.bk svg{width:18px;height:14px;flex:none}
+.libnotes{margin-top:22px}
+.libnotes div{border-top:2px solid var(--ink);padding:10px 0 12px}
+.libnotes .H{display:block;font-size:22px}
+.libnotes p{font-size:15px;color:var(--ink-2)}
 .nope{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
 .nope .lab{margin-right:6px}
 .nope span.x{border:2px solid var(--ink);padding:4px 10px;font-size:14px;text-decoration:line-through;text-decoration-color:var(--tomato);text-decoration-thickness:2px}
@@ -527,8 +541,27 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
   <p class="small" style="margin-top:12px">✶ Les pièces de lancement pour la première édition. Les autres s'ajoutent au fil des saisons, selon ce qui se vend.</p>
 </div></section>
 
+<section class="ch" id="bibliotheque" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">03</span><h2 class="H">La bibliothèque</h2><p class="I">Le temps long, en vrai : des classiques à lire au bord de l'eau.</p></div>
+  <div class="lib">
+    <figure style="margin:0">
+      <div class="frame"><img src="img/p06771.jpg" alt="Une vacancière lit au bord de la piscine" loading="lazy"></div>
+      <figcaption class="cap"><b>Le temps long</b>photo du reportage, juillet 2026</figcaption>
+    </figure>
+    <div>
+      <div class="shelf" aria-label="Exemples de couvertures aux couleurs du camping"><div class="bk" style="background:#c07a33;color:#f6f0d6"><span class="a">Michel de Montaigne</span><span class="t">Essais</span><span class="e"><svg viewBox="-4 0 36 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><path d="M0 22 L14 2 L28 22 Z"/><path d="M9 22 L14 13 L19 22"/></g></svg>La Castillonderie · 2027</span></div><div class="bk" style="background:#2b3a2a;color:#f6f0d6"><span class="a">Eugène Le Roy</span><span class="t">Jacquou le Croquant</span><span class="e"><svg viewBox="-4 0 36 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><path d="M0 22 L14 2 L28 22 Z"/><path d="M9 22 L14 13 L19 22"/></g></svg>La Castillonderie · 2027</span></div><div class="bk" style="background:#ffd23f;color:#1c1d19"><span class="a">Jules Verne</span><span class="t">Voyage au centre de la Terre</span><span class="e"><svg viewBox="-4 0 36 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><path d="M0 22 L14 2 L28 22 Z"/><path d="M9 22 L14 13 L19 22"/></g></svg>La Castillonderie · 2027</span></div><div class="bk" style="background:#f6f0d6;color:#1c1d19"><span class="a">Jean-Jacques Rousseau</span><span class="t">Rêveries du promeneur solitaire</span><span class="e"><svg viewBox="-4 0 36 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><path d="M0 22 L14 2 L28 22 Z"/><path d="M9 22 L14 13 L19 22"/></g></svg>La Castillonderie · 2027</span></div><div class="bk" style="background:#e0482b;color:#f6f0d6"><span class="a">George Sand</span><span class="t">La Mare au diable</span><span class="e"><svg viewBox="-4 0 36 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><path d="M0 22 L14 2 L28 22 Z"/><path d="M9 22 L14 13 L19 22"/></g></svg>La Castillonderie · 2027</span></div><div class="bk" style="background:#d6e5bf;color:#1c1d19"><span class="a">Jean de La Fontaine</span><span class="t">Fables</span><span class="e"><svg viewBox="-4 0 36 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"><path d="M0 22 L14 2 L28 22 Z"/><path d="M9 22 L14 13 L19 22"/></g></svg>La Castillonderie · 2027</span></div></div>
+      <div class="libnotes">
+        <div><span class="H">Une étagère en libre accès</span><p>À l'accueil et près de la piscine : on emprunte, on lit, on repose. Un geste simple qui dit tout de l'esprit du lieu.</p></div>
+        <div><span class="H">Des classiques choisis pour la vallée</span><p>Montaigne et Eugène Le Roy pour le Périgord, Jules Verne pour la Préhistoire, Rousseau pour la marche, La Fontaine pour les enfants.</p></div>
+        <div><span class="H">Les éditions du camping</span><p>Couverture aux couleurs de l'édition, une photo du reportage à l'intérieur, imprimées à la demande avec notre partenaire d'impression. Le livre se prête sur place et se vend pour l'emporter.</p></div>
+        <div><span class="H">Sur les réseaux</span><p>« Lu au bord de l'étang » : un rendez-vous régulier du social wall, qui donne au compte un ton à part.</p></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 <section class="ch" id="parcours" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">03</span><h2 class="H">Où et quand la proposer</h2><p class="I">Six moments, du clic de réservation au retour à la maison.</p></div>
+  <div class="head"><span class="num">04</span><h2 class="H">Où et quand la proposer</h2><p class="I">Six moments, du clic de réservation au retour à la maison.</p></div>
   <ol class="path">
     <li><span class="when">À la réservation</span><span class="H">En option</span><p>La pièce de l'année proposée avec le petit-déjeuner et le linge, retirée à l'arrivée.</p></li>
     <li><span class="when">Dix jours avant</span><span class="H">L'e-mail d'avant-séjour</span><p>« Votre t-shirt vous attend » : précommande en un clic, taille choisie à l'avance.</p></li>
@@ -540,7 +573,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 </div></section>
 
 <section class="ch" id="regles" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">04</span><h2 class="H">Les bonnes règles</h2><p class="I">Ce qui fait la différence entre un souvenir et un objet oublié.</p></div>
+  <div class="head"><span class="num">05</span><h2 class="H">Les bonnes règles</h2><p class="I">Ce qui fait la différence entre un souvenir et un objet oublié.</p></div>
   <div class="dos">
     <div><span class="H">La qualité d'abord</span><p>Coton épais, coupe actuelle, couleurs choisies avec le mood board. Mieux vaut deux belles pièces que dix produits moyens.</p></div>
     <div><span class="H">Montrer porté</span><p>L'équipe porte la collection, les photos clients alimentent les réseaux. Un objet se vend quand on le voit vivre.</p></div>
@@ -550,7 +583,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 </div></section>
 
 <section class="ch" id="chiffres" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">05</span><h2 class="H">Ce que ça peut rapporter</h2><p class="I">Une hypothèse simple, à vérifier avec les chiffres du camping.</p></div>
+  <div class="head"><span class="num">06</span><h2 class="H">Ce que ça peut rapporter</h2><p class="I">Une hypothèse simple, à vérifier avec les chiffres du camping.</p></div>
   <p class="lede">Faites varier les hypothèses : la marge se calcule toute seule. Les valeurs de départ sont des ordres de grandeur, pas des engagements.</p>
   <div class="sim" id="sim">
     <div class="in">
@@ -582,7 +615,7 @@ g('o-sent').textContent='Soit '+f(u)+' pièces vendues sur '+f(fr)+' vacanciers.
 ['s-freq','s-rate','s-price','s-cost'].forEach(function(i){g(i).addEventListener('input',run)});run();})();</script>
 
 <section class="ch" id="cle-en-main" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">06</span><h2 class="H">Clé en main</h2><p class="I">Le camping n'a rien à gérer, sinon à la proposer.</p></div>
+  <div class="head"><span class="num">07</span><h2 class="H">Clé en main</h2><p class="I">Le camping n'a rien à gérer, sinon à la proposer.</p></div>
   <div class="key">
     <div><span class="H">Création</span><p>Logo, couleurs de l'édition, dessin des pièces.</p></div>
     <div><span class="H">Production</span><p>Fabrication en petite série ou à la demande, sans stock à porter.</p></div>
