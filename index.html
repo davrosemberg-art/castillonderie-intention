@@ -245,6 +245,48 @@ footer{background:var(--ink);color:#d9d3b8;font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-block:36px}
 footer .H{font-size:40px;color:var(--cream);display:block}
 
+.toc a > *{min-width:0;overflow-wrap:anywhere}
+@media (max-width:600px){.toc .H{font-size:24px}}
+/* blocs dépliants */
+details.more{margin-top:28px;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)}
+details.more > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0}
+details.more > summary::-webkit-details-marker{display:none}
+details.more > summary .lab{font-size:18px}
+details.more > summary i{width:34px;height:34px;flex:none;border:3px solid currentColor;position:relative}
+details.more > summary i::before,details.more > summary i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:3px;background:currentColor;transform:translate(-50%,-50%)}
+details.more > summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+details.more[open] > summary i::after{display:none}
+details.more > summary:hover .lab{color:var(--tomato)}
+.more-in{padding-bottom:28px}
+.more-in > :first-child{margin-top:0!important}
+.inkband details.more{border-color:var(--cream)}
+/* social wall */
+.wall-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-top:64px;border-top:4px solid var(--ink);padding-top:16px}
+.wall-head .H{font-size:clamp(34px,4.6vw,64px)}
+.wall-head .I{font-size:clamp(20px,2.2vw,28px);color:var(--ink-2)}
+.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:24px;max-width:760px}
+.wall > *{margin:0;position:relative;aspect-ratio:4/5;border:3px solid var(--ink);overflow:hidden;background:var(--ink)}
+.wall img,.wall video{width:100%;height:100%;object-fit:cover}
+.wall .kind{position:absolute;top:8px;left:8px;font-family:var(--heavy);text-transform:uppercase;font-size:12px;letter-spacing:.06em;padding:3px 7px;background:var(--cream);color:var(--ink)}
+.wall .kind.v{background:var(--sun)}
+.wall .daily{display:flex;flex-direction:column;justify-content:flex-end;padding:14px;color:var(--ink)}
+.wall .daily.t{background:var(--tomato);color:var(--cream)}
+.wall .daily.s{background:var(--sun)}
+.wall .daily.c{background:var(--cream)}
+.wall .daily p{font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.2vw,24px);line-height:1.1}
+.wall .daily .kind{background:var(--ink);color:var(--cream)}
+.wall-side{display:grid;grid-template-columns:minmax(0,760px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:960px){.wall-side{grid-template-columns:1fr}}
+.wall-notes{margin-top:24px}
+.wall-notes div{border-top:2px solid var(--ink);padding:12px 0}
+.wall-notes .H{font-size:24px;display:block}
+.wall-notes p{font-size:15px;color:var(--ink-2)}
+.coach{margin-top:30px;border:4px solid var(--ink);background:var(--cream);display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 28px;padding:22px 24px;align-items:start}
+.coach .big6{font-family:var(--heavy);font-size:clamp(64px,8vw,110px);line-height:.85;color:var(--tomato)}
+.coach .H{font-size:clamp(28px,3.2vw,42px)}
+.coach p{margin-top:8px;font-size:16px;color:var(--ink-2)}
+.coach ul{margin:10px 0 0;padding-left:18px;font-size:15px;color:var(--ink-2)}
+@media (max-width:600px){.coach{grid-template-columns:1fr}}
 /* écran de code */
 html.locked .beta,html.locked .mast,html.locked main,html.locked footer{display:none}
 .gate{display:none;min-height:100vh;place-items:center;padding-block:40px}
@@ -325,10 +367,11 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 
 <section class="ch" id="constat"><div class="wrap">
   <div class="head"><span class="num">01</span><h2 class="H">Le constat</h2><p class="I">Le produit est là. Il reste à le raconter, et à le vendre plus tôt.</p></div>
-  <div class="two">
+  <p class="lede">Les clients aiment le lieu et le disent. Ce qui freine, c'est la façon de le faire connaître et de le vendre.</p>
+  <details class="more"><summary><span class="lab">Les cinq freins en détail</span><i aria-hidden="true"></i></summary><div class="more-in">
+<div class="two">
     <div>
-      <p class="lede" style="margin-top:0">Piscine chauffée, étang de pêche, hébergements variés jusqu'aux insolites, pain livré le matin, animation en haute saison : les clients aiment le lieu et le disent. Ce qui freine tient moins au produit qu'à la façon de le faire connaître et de le vendre.</p>
-      <ul class="points" style="margin-top:26px">
+            <ul class="points" style="margin-top:26px">
         <li><span class="H">Marge sous tension</span><p>Le snack se vide, et les prix ne peuvent plus beaucoup monter.</p></li>
         <li><span class="H">Deux canaux</span><p>Allotements Maeva et réservation directe, dans des proportions à mesurer.</p></li>
         <li><span class="H">Un vivier dormant</span><p>Des centaines de familles chaque été, peu d'actions pour les faire revenir.</p></li>
@@ -342,6 +385,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
       <figcaption class="cap"><b>L'étang</b>à quelques pas des emplacements</figcaption>
     </figure>
   </div>
+</div></details>
 </div></section>
 
 <section class="ch" id="fil-rouge" style="padding-top:0"><div class="wrap">
@@ -378,7 +422,8 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <figure class="m8"><img src="img/p06719.jpg" alt="La piscine et ses transats bordés de chênes" loading="lazy"><figcaption>Le bleu dans le vert</figcaption></figure>
     <figure class="m9"><img src="img/p07295-2.jpg" alt="Vacancière au petit-déjeuner, bouquet de fleurs" loading="lazy"><figcaption>Présence réelle</figcaption></figure>
   </div>
-  <div class="palette" aria-label="Palette">
+  <details class="more"><summary><span class="lab">Palette et règles de prise de vue</span><i aria-hidden="true"></i></summary><div class="more-in">
+<div class="palette" aria-label="Palette">
     <div style="background:#2b3a2a;color:#f6f0d6">Vert chêne</div>
     <div style="background:#d6e5bf">Amande</div>
     <div style="background:#c07a33;color:#f6f0d6">Ocre</div>
@@ -391,6 +436,27 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <div><span class="H">Gestes</span><p>Le pain qu'on dépose, la ligne qu'on lance, les verres qui trinquent.</p></div>
     <div><span class="H">Humains</span><p>Des familles et des couples en situation, jamais posés face caméra.</p></div>
     <div><span class="H">Ton</span><p>Sobre, chaleureux, des phrases courtes au « on ».</p></div>
+  </div>
+</div></details>
+<div class="wall-head"><h3 class="H">Le social wall</h3><p class="I">Capsules, photos et quotidien de l'équipe, en alternance.</p></div>
+  <div class="wall-side">
+    <div class="wall" aria-label="Exemple de grille de publications">
+      <figure><video src="vid/glissade-1.mp4" poster="vid/glissade-1.jpg" muted loop playsinline preload="none" data-auto></video><span class="kind v">Capsule</span></figure>
+      <figure><img src="img/p07233.jpg" alt="Deux verres trinquent sous les arbres" loading="lazy"><span class="kind">Photo</span></figure>
+      <div class="daily t"><span class="kind">Quotidien</span><p>« Pain sorti du four, 7 h 30. »</p></div>
+      <figure><img src="img/p06771.jpg" alt="Lecture au bord de la piscine" loading="lazy"><span class="kind">Photo</span></figure>
+      <figure><video src="vid/vue-sur-snack.mp4" poster="vid/vue-sur-snack.jpg" muted loop playsinline preload="none" data-auto></video><span class="kind v">Capsule</span></figure>
+      <div class="daily s"><span class="kind">Quotidien</span><p>« Brume sur l'étang ce matin. »</p></div>
+      <div class="daily c"><span class="kind">Quotidien</span><p>« Les chevreuils à la lisière, vus depuis l'accueil. »</p></div>
+      <figure><img src="img/p07258.jpg" alt="Petit-déjeuner servi sous les arbres" loading="lazy"><span class="kind">Photo</span></figure>
+      <figure><video src="vid/entree-tente-cast.mp4" poster="vid/entree-tente-cast.jpg" muted loop playsinline preload="none" data-auto></video><span class="kind v">Capsule</span></figure>
+    </div>
+    <div class="wall-notes">
+      <div><span class="H">Le rythme</span><p>Trois publications par semaine : une capsule, une photo du reportage, un moment du quotidien.</p></div>
+      <div><span class="H">Le quotidien</span><p>Pris au téléphone par l'équipe : le pain, la brume, la pêche, l'apéro quizz. C'est ce qui rend le compte vivant entre deux tournages.</p></div>
+      <div><span class="H">Un seul dossier</span><p>Un espace partagé où tout arrive : capsules, photos du reportage, images de l'équipe, photos de clients avec leur accord. On y puise pour les réseaux, le site et les e-mails.</p></div>
+      <div><span class="H">Hors saison</span><p>La matière de l'été nourrit l'hiver, quand on vend la saison suivante.</p></div>
+    </div>
   </div>
 </div></section>
 
@@ -419,7 +485,8 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <article class="card"><div class="frame"><img src="img/p06100.jpg" alt="Tente sur un emplacement ombragé" loading="lazy"></div><div class="t"><span class="H">Emplacements</span><p>Ombragés ou en prairie, tente, caravane ou camping-car.</p><span class="go">Choisir →</span></div></article>
     <article class="card"><div class="frame"><img src="img/p06979.jpg" alt="Terrasse du snack animée sous les arbres" loading="lazy"></div><div class="t"><span class="H">La table</span><p>Pain livré au réveil, formules à commander la veille, soirées à thème.</p><span class="go">Ajouter →</span></div></article>
   </div>
-  <div class="redo">
+  <details class="more"><summary><span class="lab">Ce qu'on refait sur le site</span><i aria-hidden="true"></i></summary><div class="more-in">
+<div class="redo">
     <div><span class="H">Mobile d'abord</span><span class="p">Là où se fait l'essentiel des recherches.</span></div>
     <div><span class="H">Un bouton réserver</span><span class="p">Relié au moteur de réservation, sur chaque page.</span></div>
     <div><span class="H">Options en ligne</span><span class="p">Petit-déjeuner, linge, vélos, apéro terroir dès la réservation.</span></div>
@@ -427,11 +494,17 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <div><span class="H">Référencement local</span><span class="p">Camping Lascaux, vallée de la Vézère, Sarlat.</span></div>
     <div><span class="H">Cohérence</span><span class="p">Mêmes dates, photos et récit sur le site, Google et les plateformes.</span></div>
   </div>
+</div></details>
 </div></section>
 
 <section class="ch" id="chantiers" style="padding-top:0"><div class="wrap">
   <div class="head"><span class="num">06</span><h2 class="H">L'accompagnement</h2><p class="I">On mesure, on vend tôt, puis on augmente le panier.</p></div>
-  <ol class="chs">
+  <div class="coach"><span class="big6">6 mois</span><div><h3 class="H">Former la personne en charge des réseaux</h3>
+    <p>On avance en binôme pendant six mois, pour que la matière se crée au quotidien et que le camping devienne autonome. Un temps dédié et rémunéré, reconnu dans l'organisation de l'équipe.</p>
+    <ul><li>Ligne éditoriale et planning de publication</li><li>Prise de vue et montage simple au téléphone</li><li>Gestion du dossier de matière partagé</li><li>Lecture des statistiques et des réservations</li></ul>
+    <p>Un modèle d'équipe que l'on pourra présenter à d'autres campings du réseau.</p></div></div>
+  <details class="more"><summary><span class="lab">Les sept chantiers en détail</span><i aria-hidden="true"></i></summary><div class="more-in">
+<ol class="chs">
     <li><span class="H">Audit des ventes</span><p>Part Maeva et part directe, dates de réservation, creux de remplissage, coût réel de chaque canal. Maeva apporte le remplissage de fond, le direct fidélise et remplit les ailes de saison.</p></li>
     <li><span class="H">Base clients</span><p>Récupérer, nettoyer et segmenter l'historique, en vérifiant le consentement et le cadre contractuel des clients venus par Maeva.</p></li>
     <li><span class="H">Early bird</span><ul><li>Novembre : accès prioritaire des fidèles à l'été 2027</li><li>Décembre : le séjour en bon cadeau de Noël</li><li>Janvier : relance avec les capsules et les nouveautés</li><li>Février à mars : dernier appel, ponts de mai et ailes de saison</li></ul></li>
@@ -441,6 +514,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <li><span class="H">Territoire</span><p>Sites, prestataires, producteurs et acteurs institutionnels, avec ce que chacun apporte au client et au camping.</p></li>
   </ol>
   <div class="box"><span class="H">En parallèle</span><p>Un rendez-vous découverte avec une consultante de notre réseau, spécialisée en structuration financière et en financements publics, pour éclairer la trésorerie et les aides mobilisables avant les travaux.</p></div>
+</div></details>
 </div></section>
 
 <section class="ch" id="calendrier" style="padding-top:0"><div class="wrap">
@@ -473,7 +547,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 
 <section class="ch" id="offre" style="padding-top:0"><div class="wrap">
   <div class="head"><span class="num">09</span><h2 class="H">La méthode</h2><p class="I">Avancer étape par étape, sur des résultats mesurés.</p></div>
-  <p class="lede">Chaque étape se décide séparément, et la suivante ne démarre que si la précédente a fait ses preuves. Le chiffrage se construit après le diagnostic, à partir des chiffres réels du camping, pour que chaque étape soit rentabilisée par les ventes qu'elle génère.</p>
+  <p class="lede">Chaque étape se décide séparément, et la suivante ne démarre que si la précédente a fait ses preuves.</p>
   <div class="tbl">
     <table>
       <thead><tr><th>Étape</th><th>Ce que l'on fait</th><th>Ce que le camping y gagne</th><th>Quand</th></tr></thead>
@@ -483,10 +557,11 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
         <tr><td>2 · Vendre tôt</td><td>Séquence d'e-mails early bird en direct, publications associées</td><td>Des réservations directes et des acomptes encaissés dès l'hiver</td><td>Déc. à mars</td></tr>
         <tr><td>3 · Le site</td><td>Nouveau site selon le mood board, connecté au moteur de réservation</td><td>Un site qui vend en direct, avec les options dès la réservation</td><td>Janv. à mars</td></tr>
         <tr><td>4 · La saison</td><td>Ventes additionnelles en ligne et sur place, réseaux, point mensuel</td><td>Un panier moyen plus élevé sans toucher aux prix</td><td>Avril à sept.</td></tr>
+        <tr><td>En continu · Formation</td><td>Binôme avec la personne en charge des réseaux</td><td>Une équipe autonome qui crée sa propre matière</td><td>6 mois</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="total"><span class="small">Proposition chiffrée remise après l'atelier, étape par étape.</span><span class="H" style="font-size:clamp(44px,6vw,84px)">Pas à pas.</span></div>
+  <div class="total"><span class="small">Le chiffrage se construit après le diagnostic, à partir des chiffres réels du camping.<br>Proposition chiffrée remise après l'atelier.</span><span class="H" style="font-size:clamp(44px,6vw,84px)">Pas à pas.</span></div>
 
   <div class="sig">
     <video src="vid/etang-vu-du-ciel-1.mp4" poster="vid/etang-vu-du-ciel-1.jpg" muted loop playsinline preload="none" data-auto></video>
@@ -502,7 +577,8 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 
 <section class="ch" id="demarrer" style="padding-top:0"><div class="wrap">
   <div class="head"><span class="num">10</span><h2 class="H">Pour démarrer</h2><p class="I">Ce qu'il nous faut dès la semaine prochaine.</p></div>
-  <ul class="check">
+  <details class="more"><summary><span class="lab">La liste des accès et documents</span><i aria-hidden="true"></i></summary><div class="more-in">
+<ul class="check">
     <li>Accès administrateur Facebook, Instagram et fiche Google</li>
     <li>Accès au site : hébergement, domaine, back-office</li>
     <li>Accès au logiciel et au moteur de réservation</li>
@@ -515,6 +591,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
     <li>Travaux envisagés et budget estimé</li>
     <li>Partenaires et prestataires locaux déjà en contact</li>
   </ul>
+</div></details>
 </div></section>
 </main>
 
