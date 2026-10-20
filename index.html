@@ -219,6 +219,13 @@ tr.free td:last-child{color:var(--tomato)}
 .total{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-top:18px}
 .total .H{font-size:clamp(72px,11vw,150px);line-height:.85}
 .small{font-size:14px;color:var(--ink-2)}
+.cash{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));margin-top:28px;border:3px solid var(--ink);background:var(--cream)}
+.cash div{padding:10px 10px 12px;border-right:3px solid var(--ink);min-width:0}
+.cash div:last-child{border-right:0}
+.cash .m{display:block;font-family:var(--serif);font-style:italic;font-size:19px}
+.cash .H{font-size:clamp(26px,3.4vw,44px);font-variant-numeric:tabular-nums}
+.cash .hi{background:var(--sun)}
+@media (max-width:600px){.cash{grid-template-columns:repeat(4,minmax(0,1fr))}.cash div{border-bottom:3px solid var(--ink)}}
 .sig{margin-top:56px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);border:4px solid var(--ink);background:var(--tomato);color:var(--cream)}
 @media (max-width:860px){.sig{grid-template-columns:1fr}}
 .sig video{width:100%;height:100%;object-fit:cover;min-height:280px;border-right:4px solid var(--ink)}
@@ -439,21 +446,30 @@ footer .H{font-size:40px;color:var(--cream);display:block}
 </div></section>
 
 <section class="ch" id="offre" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">09</span><h2 class="H">La proposition</h2><p class="I">Un socle modeste, une part liée aux résultats.</p></div>
-  <p class="lede">Montants indicatifs, à ajuster après l'atelier. La part variable porte uniquement sur les réservations directes tracées par les codes de campagne, jamais sur le chiffre d'affaires global du camping.</p>
+  <div class="head"><span class="num">09</span><h2 class="H">La proposition</h2><p class="I">Avancer étape par étape, au rythme de la trésorerie.</p></div>
+  <p class="lede">Chaque étape se décide séparément. On ne s'engage que sur la première, et la suivante ne démarre que si la précédente a convaincu. Les règlements sont étalés sur l'hiver et le printemps, et les plus gros tombent quand les premières réservations early bird rentrent.</p>
   <div class="tbl">
     <table>
-      <thead><tr><th>Volet</th><th>Contenu</th><th>Période</th><th>Montant</th></tr></thead>
+      <thead><tr><th>Étape</th><th>Contenu</th><th>Règlement</th><th>Montant</th></tr></thead>
       <tbody>
-        <tr class="free"><td>Amorçage</td><td>Un mois de prise en main des réseaux sociaux, atelier fil rouge</td><td>Novembre 2026</td><td>Offert</td></tr>
-        <tr><td>Audit et stratégie</td><td>Audit des ventes et de la base clients, fil rouge, mood board, cartographie, plan d'action 2027, lancement early bird</td><td>Nov. à déc. 2026</td><td>1 200 €</td></tr>
-        <tr><td>Saison</td><td>Séquences e-mails, ventes additionnelles, réseaux sociaux, point mensuel de pilotage</td><td>Janv. à juin 2027</td><td>390 € / mois</td></tr>
-        <tr><td>Site web</td><td>Nouveau site selon le mood board, connecté au moteur de réservation</td><td>Avant février 2027</td><td>1 200 €</td></tr>
-        <tr><td>Variable</td><td>5 % des réservations directes portant un code de campagne, plafonnés à 1 500 €</td><td>Saison 2027</td><td>Selon résultats</td></tr>
+        <tr class="free"><td>Amorçage</td><td>Un mois de prise en main des réseaux sociaux et l'atelier fil rouge, en novembre</td><td>Aucun</td><td>Offert</td></tr>
+        <tr><td>1 · Diagnostic</td><td>Audit des ventes et de la base clients, fil rouge, mood board, cartographie du territoire, plan d'action 2027</td><td>3 × 300 €, de décembre à février</td><td>900 €</td></tr>
+        <tr><td>2 · Early bird</td><td>Conception et envoi de la séquence d'e-mails, publications associées sur les réseaux</td><td>3 × 300 €, de février à avril</td><td>900 €</td></tr>
+        <tr><td>3 · Site web</td><td>Nouveau site selon le mood board, connecté au moteur de réservation</td><td>4 × 300 €, de mars à juin</td><td>1 200 €</td></tr>
+        <tr><td>Option saison</td><td>Pilotage des ventes additionnelles et des réseaux d'avril à juin, point mensuel</td><td>Au mois, sans engagement</td><td>290 € / mois</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="total"><span class="small">Socle fixe total, en mensualités de novembre à juin<br>TVA non applicable, article 293 B du CGI</span><span class="H">4 740 €</span></div>
+  <div class="cash" aria-label="Échéancier mensuel des trois étapes">
+    <div><span class="m">Déc.</span><span class="H">300</span></div>
+    <div><span class="m">Janv.</span><span class="H">300</span></div>
+    <div class="hi"><span class="m">Févr.</span><span class="H">600</span></div>
+    <div class="hi"><span class="m">Mars</span><span class="H">600</span></div>
+    <div class="hi"><span class="m">Avril</span><span class="H">600</span></div>
+    <div><span class="m">Mai</span><span class="H">300</span></div>
+    <div><span class="m">Juin</span><span class="H">300</span></div>
+  </div>
+  <div class="total"><span class="small">Pour démarrer, seule l'étape 1 est engagée : 300 € en décembre.<br>Les trois étapes représentent 3 000 € au total, réglés selon l'échéancier ci-dessus, en euros.<br>TVA non applicable, article 293 B du CGI</span><span class="H">300 €</span></div>
 
   <div class="sig">
     <video src="vid/etang-vu-du-ciel-1.mp4" poster="vid/etang-vu-du-ciel-1.jpg" muted loop playsinline preload="none" data-auto></video>
