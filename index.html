@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>La Castillonderie bêta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600&display=swap">
+<style>
+/* Layout: a camping "magazine" issue. Masthead, giant condensed headline with an italic counter-line, sommaire on thick rules, then numbered chapters set like spreads. Single deliberate look (poster), not themed. */
+:root{
+  --ground-a:#d6e5bf;   /* vert amande */
+  --ground-b:#ece0ae;   /* paille */
+  --ink:#1c1d19;
+  --ink-2:#3e4136;
+  --tomato:#e0482b;     /* chaises rouges du snack */
+  --sun:#ffd23f;        /* jaune Maeva */
+  --cream:#f6f0d6;
+  --heavy:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutr:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--ground-a)}
+body{background:linear-gradient(170deg,var(--ground-a) 0%,#e1e3b6 45%,var(--ground-b) 100%);background-attachment:fixed;color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+h1,h2,h3{margin:0;font-weight:400}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tomato);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.H{font-family:var(--heavy);text-transform:uppercase;line-height:.92;letter-spacing:.005em}
+.I{font-family:var(--serif);font-style:italic;font-weight:400}
+.lab{font-family:var(--heavy);text-transform:uppercase;letter-spacing:.06em;font-size:15px}
+.rule{border-top:4px solid var(--ink)}
+.thin{border-top:2px solid var(--ink)}
+
+/* bande maquette */
+.beta{background:var(--ink);color:var(--cream);font-size:13px}
+.beta .wrap{display:flex;gap:10px 18px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding-block:7px}
+.beta .lab{font-size:13px;color:var(--sun)}
+
+/* masthead */
+.mast .wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;padding-block:14px 10px}
+.mast .wrap > :nth-child(2){text-align:center}
+.mast .wrap > :last-child{text-align:right}
+@media (max-width:760px){.mast .wrap{grid-template-columns:1fr}.mast .wrap > *{text-align:left!important}}
+
+/* hero */
+.hero{position:relative}
+.hero .wrap{padding-block:0 56px}
+.hero .top{border-top:4px solid var(--ink);padding-top:18px;display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.word{font-size:min(calc((100vw - 40px) / 8.8),137px);white-space:nowrap}
+.word-side{padding-bottom:clamp(8px,1.6vw,26px)}
+.word-side .H{font-size:clamp(28px,3.6vw,52px)}
+.word-side .I{font-size:clamp(22px,2.6vw,38px);line-height:1.05;display:block}
+.hero .grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:end;margin-top:clamp(20px,3vw,40px)}
+@media (max-width:900px){.hero .grid{grid-template-columns:1fr}}
+.big{font-size:clamp(56px,8.6vw,132px)}
+.counter{font-size:clamp(36px,5vw,76px);line-height:1;margin-top:6px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.b1,.b2{font-family:var(--heavy);text-transform:uppercase;letter-spacing:.05em;font-size:18px;text-decoration:none;padding:16px 26px;border:3px solid var(--ink);display:inline-block}
+.b1{background:var(--ink);color:var(--cream)}
+.b2{background:var(--sun);color:var(--ink)}
+.b1:hover{background:var(--tomato);border-color:var(--tomato)}
+.toc{list-style:none;margin:0;padding:0}
+.toc li{border-top:4px solid var(--ink);padding:14px 0 16px}
+.toc a{text-decoration:none;display:grid;grid-template-columns:52px minmax(0,1fr);gap:4px 12px}
+.toc .n{font-family:var(--heavy);font-size:30px;line-height:1;color:var(--tomato);grid-row:span 2}
+.toc .H{font-size:30px}
+.toc .I{font-size:21px;line-height:1.2;color:var(--ink-2)}
+.toc a:hover .H{color:var(--tomato)}
+.sticker{position:absolute;right:max(12px,3vw);top:clamp(60px,9vw,120px);width:clamp(118px,13vw,170px);aspect-ratio:1;display:grid;place-items:center;text-align:center;transform:rotate(-12deg);z-index:2}
+.sticker svg{position:absolute;inset:0;width:100%;height:100%}
+.sticker span{position:relative;font-family:var(--heavy);text-transform:uppercase;font-size:clamp(15px,1.6vw,21px);line-height:.98;padding:0 18%}
+@media (max-width:760px){.sticker{top:auto;bottom:-46px;right:16px}}
+
+/* film */
+.film{border:4px solid var(--ink);background:var(--ink);position:relative}
+.film video{width:100%;aspect-ratio:21/9;object-fit:cover}
+@media (max-width:700px){.film video{aspect-ratio:4/3}}
+.film .tag{position:absolute;left:0;bottom:0;background:var(--sun);color:var(--ink);padding:8px 14px}
+.legend{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:10px;font-size:14px;color:var(--ink-2)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:26px}
+@media (max-width:700px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stats div{border-top:4px solid var(--ink);padding:12px 12px 0 0}
+.stats b{display:block;font-family:var(--heavy);font-size:clamp(38px,5vw,64px);line-height:1}
+.stats span{font-size:14px;color:var(--ink-2)}
+
+/* chapitres */
+section.ch{padding-block:clamp(56px,8vw,104px)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 22px;align-items:end;border-top:4px solid var(--ink);padding-top:16px}
+.head .num{font-family:var(--heavy);font-size:clamp(64px,9vw,130px);line-height:.8;color:var(--tomato)}
+.head h2{font-size:clamp(34px,6vw,88px);overflow-wrap:anywhere;min-width:0}
+.head .I{grid-column:2;font-size:clamp(22px,2.6vw,34px);line-height:1.1;color:var(--ink-2)}
+@media (max-width:600px){.head{grid-template-columns:1fr}.head .I{grid-column:1}}
+.lede{max-width:60ch;margin-top:28px;font-size:18px}
+.lede + .lede{margin-top:12px}
+.frame{border:3px solid var(--ink);background:var(--ink);overflow:hidden}
+.frame img{width:100%;height:100%;object-fit:cover}
+.cap{font-size:13.5px;color:var(--ink-2);margin-top:8px}
+.cap b{font-family:var(--heavy);font-weight:400;text-transform:uppercase;letter-spacing:.05em;color:var(--ink);margin-right:6px}
+
+/* constat */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);margin-top:36px;align-items:start}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.points{list-style:none;margin:0;padding:0}
+.points li{border-top:2px solid var(--ink);padding:14px 0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:16px}
+.points .H{font-size:24px}
+.points p{color:var(--ink-2);font-size:15.5px}
+.quote{margin-top:28px;font-family:var(--serif);font-style:italic;font-size:clamp(28px,3vw,40px);line-height:1.1}
+
+/* fil rouge */
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+@media (max-width:860px){.three{grid-template-columns:1fr}}
+.three article{display:flex;flex-direction:column;gap:12px}
+.three .frame{aspect-ratio:4/5;position:relative}
+.three .flag{position:absolute;top:12px;left:12px;background:var(--cream);color:var(--ink);padding:6px 10px;font-size:14px}
+.three .reco .flag{background:var(--tomato);color:var(--cream)}
+.three .reco .frame{border-color:var(--tomato);border-width:5px}
+.three h3{font-size:34px}
+.three p{font-size:15.5px;color:var(--ink-2)}
+
+/* mood */
+.mood{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(64px,7.4vw,104px);gap:14px;margin-top:40px}
+.mood figure{margin:0;position:relative;border:3px solid var(--ink);overflow:hidden;background:var(--ink)}
+.mood img{width:100%;height:100%;object-fit:cover}
+.mood figcaption{position:absolute;left:0;bottom:0;background:var(--sun);color:var(--ink);font-family:var(--heavy);text-transform:uppercase;letter-spacing:.05em;font-size:14px;padding:5px 10px}
+.m1{grid-column:1/6;grid-row:span 5}.m2{grid-column:6/9;grid-row:span 2}.m3{grid-column:9/13;grid-row:span 3}
+.m4{grid-column:6/9;grid-row:span 3}.m5{grid-column:9/13;grid-row:span 2}.m6{grid-column:1/4;grid-row:span 3}
+.m7{grid-column:4/6;grid-row:span 3}.m8{grid-column:6/10;grid-row:span 3}.m9{grid-column:10/13;grid-row:span 3}
+@media (max-width:760px){.mood{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}.mood figure{grid-column:auto!important;grid-row:span 1!important}.m1{grid-column:1/-1!important;grid-row:span 2!important}}
+.palette{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:28px;border:3px solid var(--ink)}
+.palette div{padding:44px 12px 10px;border-right:3px solid var(--ink);font-family:var(--heavy);text-transform:uppercase;font-size:14px;letter-spacing:.04em}
+.palette div:last-child{border-right:0}
+@media (max-width:600px){.palette{grid-template-columns:repeat(2,minmax(0,1fr))}.palette div{border-bottom:3px solid var(--ink)}}
+.rules{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 20px;margin-top:28px}
+.rules > div{border-top:2px solid var(--ink);padding-top:12px;min-width:0}
+.rules .H{font-size:24px;display:block;margin-bottom:6px}
+.rules p{font-size:14.5px;color:var(--ink-2)}
+@media (max-width:960px){.rules{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+
+/* capsules : bande encre */
+.inkband{background:var(--ink);color:var(--cream)}
+.inkband .head{border-color:var(--cream)}
+.inkband .head .I,.inkband .lede{color:#d9d3b8}
+.reel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:40px}
+@media (max-width:960px){.reel{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.clip{margin:0;position:relative;aspect-ratio:16/9;border:3px solid var(--cream);overflow:hidden;background:#000}
+.clip video{width:100%;height:100%;object-fit:cover}
+.clip figcaption{position:absolute;left:0;bottom:0;background:var(--cream);color:var(--ink);font-family:var(--heavy);text-transform:uppercase;font-size:13px;letter-spacing:.05em;padding:4px 9px}
+.clip.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+@media (max-width:960px){.clip.big{grid-row:span 1;aspect-ratio:16/9}}
+
+/* site */
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:40px}
+@media (max-width:960px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.cards{grid-template-columns:1fr}}
+.card{border:3px solid var(--ink);background:var(--cream);display:flex;flex-direction:column}
+.card .frame{aspect-ratio:4/3;border:0;border-bottom:3px solid var(--ink)}
+.card .t{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .H{font-size:26px}
+.card p{font-size:14.5px;color:var(--ink-2)}
+.card .go{margin-top:auto;padding-top:8px;font-family:var(--heavy);text-transform:uppercase;letter-spacing:.05em;color:var(--tomato)}
+.redo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px;margin-top:40px}
+@media (max-width:860px){.redo{grid-template-columns:1fr}}
+.redo div{border-top:2px solid var(--ink);padding:12px 0 16px}
+.redo .H{font-size:24px;display:block}
+.redo span.p{font-size:15px;color:var(--ink-2)}
+
+/* chantiers */
+.chs{list-style:none;margin:36px 0 0;padding:0;counter-reset:c}
+.chs > li{counter-increment:c;display:grid;grid-template-columns:minmax(80px,140px) minmax(0,.9fr) minmax(0,1.3fr);gap:8px 28px;border-top:2px solid var(--ink);padding:18px 0 22px}
+.chs > li::before{content:counter(c,decimal-leading-zero);font-family:var(--heavy);font-size:clamp(48px,6vw,80px);line-height:.85;color:var(--tomato)}
+.chs .H{font-size:clamp(28px,3vw,40px)}
+.chs p,.chs ul{font-size:15.5px;color:var(--ink-2);margin:0}
+.chs ul{padding-left:18px}
+@media (max-width:760px){.chs > li{grid-template-columns:64px minmax(0,1fr)}.chs > li > :last-child{grid-column:2}}
+.box{margin-top:30px;border:3px solid var(--ink);background:var(--sun);padding:20px 24px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 24px;align-items:baseline}
+.box .H{font-size:30px}
+@media (max-width:600px){.box{grid-template-columns:1fr}}
+
+/* calendrier */
+.road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:40px;border:3px solid var(--ink)}
+@media (max-width:860px){.road{grid-template-columns:1fr}}
+.phase{padding:18px 18px 22px;border-right:3px solid var(--ink);min-width:0;background:var(--cream)}
+.phase:last-child{border-right:0}
+@media (max-width:860px){.phase{border-right:0;border-bottom:3px solid var(--ink)}.phase:last-child{border-bottom:0}}
+.phase.key{background:var(--tomato);color:var(--cream)}
+.phase .when{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.1}
+.phase .H{font-size:34px;margin-top:8px;display:block}
+.phase ul{list-style:none;margin:14px 0 0;padding:0;font-size:15px}
+.phase li{border-top:1.5px solid currentColor;padding:6px 0}
+.gates{display:flex;gap:10px 28px;flex-wrap:wrap;margin-top:16px;font-size:15px}
+.gates span::before{content:"◆ ";color:var(--tomato)}
+
+/* territoire */
+.dist{margin-top:30px}
+.dist div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;border-top:2px solid var(--ink);padding:10px 0}
+.dist .H{font-size:clamp(34px,4vw,54px);text-align:right;white-space:nowrap}
+.dist .I{font-size:24px;text-align:right}
+
+/* offre */
+.tbl{overflow-x:auto;margin-top:36px;border-top:4px solid var(--ink)}
+table{width:100%;border-collapse:collapse;min-width:680px;font-size:15.5px}
+th,td{text-align:left;vertical-align:top;padding:14px 16px 14px 0;border-bottom:2px solid var(--ink)}
+th{font-family:var(--heavy);font-weight:400;text-transform:uppercase;letter-spacing:.05em;font-size:15px}
+td:first-child{font-family:var(--heavy);text-transform:uppercase;font-size:21px;line-height:1;width:20%}
+td:nth-child(2){color:var(--ink-2);width:44%}
+td:last-child,th:last-child{text-align:right;padding-right:0;white-space:nowrap;font-family:var(--heavy);font-size:24px;font-variant-numeric:tabular-nums}
+th:last-child{font-size:15px}
+tr.free td:last-child{color:var(--tomato)}
+.total{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-top:18px}
+.total .H{font-size:clamp(72px,11vw,150px);line-height:.85}
+.small{font-size:14px;color:var(--ink-2)}
+.sig{margin-top:56px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);border:4px solid var(--ink);background:var(--tomato);color:var(--cream)}
+@media (max-width:860px){.sig{grid-template-columns:1fr}}
+.sig video{width:100%;height:100%;object-fit:cover;min-height:280px;border-right:4px solid var(--ink)}
+@media (max-width:860px){.sig video{border-right:0;border-bottom:4px solid var(--ink)}}
+.sig .t{padding:clamp(22px,3.5vw,40px)}
+.sig .H{font-size:clamp(40px,5vw,68px);margin-top:6px}
+.sig p{margin-top:14px;font-size:16px}
+.sig .tagline{font-size:clamp(24px,2.6vw,32px);line-height:1.1}
+
+/* démarrer */
+.check{columns:2;column-gap:40px;list-style:none;margin:32px 0 0;padding:0}
+@media (max-width:760px){.check{columns:1}}
+.check li{break-inside:avoid;border-top:2px solid var(--ink);padding:12px 0 12px 34px;position:relative;font-size:16px}
+.check li::before{content:"";position:absolute;left:0;top:14px;width:18px;height:18px;border:3px solid var(--ink);background:var(--cream)}
+
+footer{background:var(--ink);color:#d9d3b8;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-block:36px}
+footer .H{font-size:40px;color:var(--cream);display:block}
+</style>
+</head>
+<body>
+
+
+<div class="beta"><div class="wrap"><span class="lab">Maquette bêta · non publiée</span><span>Note d'intention préparée par David Rosemberg pour l'atelier du 21 octobre 2026</span></div></div>
+
+<header class="mast"><div class="wrap">
+  <span class="lab">N°01 · Saison 2027</span>
+  <span class="lab">Récit · Photo · Vidéo · Stratégie</span>
+  <span class="lab">Avec Maeva Camping</span>
+</div></header>
+
+<main>
+<section class="hero">
+  <div class="sticker" aria-hidden="true">
+    <svg viewBox="0 0 100 100"><polygon fill="#ffd23f" points="50,2 58,20 76,9 75,30 96,30 84,47 98,62 78,68 84,89 64,82 54,99 46,82 28,95 28,74 7,74 18,57 3,43 22,35 14,15 35,20"/></svg>
+    <span>Tourné sur place, juillet 2026</span>
+  </div>
+  <div class="wrap">
+    <div class="top">
+      <div class="H word">Castillonderie</div>
+    </div>
+    <div class="grid">
+      <div>
+        <h1 class="H big">La vallée<br>cachée.</h1>
+        <p class="I counter">On dort au silence.</p>
+        <p class="lede" style="margin-top:22px">Un camping à l'abri des chênes, à Thonac, au cœur de la vallée de la Vézère. Les grands sites de la Préhistoire sont à un quart d'heure.</p>
+        <div class="ctas"><a class="b1" href="#offre">Voir la proposition ✶</a><a class="b2" href="#mood">Le mood board</a></div>
+      </div>
+      <ol class="toc">
+        <li><a href="#constat"><span class="n">01</span><span class="H">Le constat</span><span class="I">Le produit est là, le récit manque</span></a></li>
+        <li><a href="#fil-rouge"><span class="n">02</span><span class="H">Le fil rouge</span><span class="I">Faire de l'isolement une promesse</span></a></li>
+        <li><a href="#mood"><span class="n">03</span><span class="H">Le mood board</span><span class="I">Un seul langage, du site aux réseaux</span></a></li>
+        <li><a href="#chantiers"><span class="n">06</span><span class="H">L'accompagnement</span><span class="I">Vendre tôt, puis mieux sur place</span></a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <figure class="film" style="margin:0">
+    <video src="vid/vue-drone.mp4" poster="vid/vue-drone.jpg" autoplay muted loop playsinline data-auto></video>
+    <span class="tag lab">Vu du ciel · capsule drone</span>
+  </figure>
+  <div class="stats">
+    <div><b>7 km</b><span>Montignac-Lascaux</span></div>
+    <div><b>17 km</b><span>Sarlat</span></div>
+    <div><b>5 ha</b><span>de chênes et de prairies</span></div>
+    <div><b>À pied</b><span>le Thot, espace Cro-Magnon</span></div>
+  </div>
+</div>
+
+<section class="ch" id="constat"><div class="wrap">
+  <div class="head"><span class="num">01</span><h2 class="H">Le constat</h2><p class="I">Le produit est là. Il reste à le raconter, et à le vendre plus tôt.</p></div>
+  <div class="two">
+    <div>
+      <p class="lede" style="margin-top:0">Piscine chauffée, étang de pêche, hébergements variés jusqu'aux insolites, pain livré le matin, animation en haute saison : les clients aiment le lieu et le disent. Ce qui freine tient moins au produit qu'à la façon de le faire connaître et de le vendre.</p>
+      <ul class="points" style="margin-top:26px">
+        <li><span class="H">Marge sous tension</span><p>Le snack se vide, et les prix ne peuvent plus beaucoup monter.</p></li>
+        <li><span class="H">Deux canaux</span><p>Allotements Maeva et réservation directe, dans des proportions à mesurer.</p></li>
+        <li><span class="H">Un vivier dormant</span><p>Des centaines de familles chaque été, peu d'actions pour les faire revenir.</p></li>
+        <li><span class="H">Pas de fil conducteur</span><p>Site, réseaux et plateformes ne racontent pas la même histoire, ni les mêmes dates d'ouverture.</p></li>
+        <li><span class="H">Des travaux à financer</span><p>Le site et certains équipements demandent des investissements.</p></li>
+      </ul>
+      <p class="quote">Il ne s'agit pas de dépenser plus, mais d'organiser ce qui existe déjà, dans le bon ordre.</p>
+    </div>
+    <figure style="margin:0">
+      <div class="frame" style="aspect-ratio:4/5"><img src="img/p06028.jpg" alt="Une vacancière marche vers l'étang sous les arbres" loading="lazy"></div>
+      <figcaption class="cap"><b>L'étang</b>à quelques pas des emplacements</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section class="ch" id="fil-rouge" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">02</span><h2 class="H">Le fil rouge</h2><p class="I">Pas « au milieu de nulle part » : caché dans une vallée que le monde entier vient voir.</p></div>
+  <div class="three">
+    <article class="reco">
+      <div class="frame"><img src="img/p05969.jpg" alt="Hamac tendu au bord de l'étang" loading="lazy"><span class="flag lab">Notre choix</span></div>
+      <h3 class="H">La vallée cachée</h3>
+      <p>Le calme comme luxe : la brume du matin, l'étang, le pain déposé devant la porte. Pour les couples et les familles qui fuient l'agitation.</p>
+    </article>
+    <article>
+      <div class="frame"><img src="img/p06055.jpg" alt="Tente lodge sur une prairie ensoleillée" loading="lazy"><span class="flag lab">Déclinaison été</span></div>
+      <h3 class="H">Le camp de base de la Préhistoire</h3>
+      <p>On part le matin vers Lascaux, la Roque-Saint-Christophe ou les Eyzies, on rentre se baigner. Pour les familles et la clientèle étrangère.</p>
+    </article>
+    <article>
+      <div class="frame"><img src="img/p06120.jpg" alt="Deux campeurs assis devant leur tente à l'ombre" loading="lazy"><span class="flag lab">Ailes de saison</span></div>
+      <h3 class="H">Au rythme de la vallée</h3>
+      <p>Pêche, randonnée, canoë sur la Vézère, marchés de producteurs. Pour les séjours longs de mai, juin et septembre.</p>
+    </article>
+  </div>
+</div></section>
+
+<section class="ch" id="mood" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">03</span><h2 class="H">Le mood board</h2><p class="I">Toutes les images viennent du reportage de juillet 2026.</p></div>
+  <div class="mood">
+    <figure class="m1"><img src="img/p06771.jpg" alt="Lecture au bord de la piscine, chapeau de paille" loading="lazy"><figcaption>Le temps long</figcaption></figure>
+    <figure class="m2"><img src="img/p07258.jpg" alt="Petit-déjeuner, pain et viennoiseries" loading="lazy"><figcaption>Le pain du matin</figcaption></figure>
+    <figure class="m3"><img src="img/p07233.jpg" alt="Deux verres trinquent sous les arbres" loading="lazy"><figcaption>L'apéro sous les chênes</figcaption></figure>
+    <figure class="m4"><img src="img/p06048-3.jpg" alt="Hamac et chien à l'ombre près de l'eau" loading="lazy"><figcaption>L'ombre</figcaption></figure>
+    <figure class="m5"><img src="img/p06243.jpg" alt="Deux enfants rient sur un toboggan aquatique" loading="lazy"><figcaption>Les rires</figcaption></figure>
+    <figure class="m6"><img src="img/p07000.jpg" alt="Vacancière en robe blanche près d'une toile jaune" loading="lazy"><figcaption>Le jaune</figcaption></figure>
+    <figure class="m7"><img src="img/p07212.jpg" alt="Plateau de boissons au soleil couchant" loading="lazy"><figcaption>Heure dorée</figcaption></figure>
+    <figure class="m8"><img src="img/p06719.jpg" alt="La piscine et ses transats bordés de chênes" loading="lazy"><figcaption>Le bleu dans le vert</figcaption></figure>
+    <figure class="m9"><img src="img/p07295-2.jpg" alt="Vacancière au petit-déjeuner, bouquet de fleurs" loading="lazy"><figcaption>Présence réelle</figcaption></figure>
+  </div>
+  <div class="palette" aria-label="Palette">
+    <div style="background:#2b3a2a;color:#f6f0d6">Vert chêne</div>
+    <div style="background:#d6e5bf">Amande</div>
+    <div style="background:#c07a33;color:#f6f0d6">Ocre</div>
+    <div style="background:#e0482b;color:#f6f0d6">Rouge snack</div>
+    <div style="background:#ffd23f">Jaune Maeva</div>
+  </div>
+  <div class="rules">
+    <div><span class="H">Lumière</span><p>Heures dorées, brume matinale, contre-jours dans les chênes.</p></div>
+    <div><span class="H">Matières</span><p>Bois des terrasses, lin, pierre. Le bleu piscine reste un accent.</p></div>
+    <div><span class="H">Gestes</span><p>Le pain qu'on dépose, la ligne qu'on lance, les verres qui trinquent.</p></div>
+    <div><span class="H">Humains</span><p>Des familles et des couples en situation, jamais posés face caméra.</p></div>
+    <div><span class="H">Ton</span><p>Sobre, chaleureux, des phrases courtes au « on ».</p></div>
+  </div>
+</div></section>
+
+<section class="ch inkband" id="capsules"><div class="wrap">
+  <div class="head"><span class="num" style="color:var(--sun)">04</span><h2 class="H">Les capsules</h2><p class="I">Quatorze films courts, déjà tournés, prêts à servir.</p></div>
+  <p class="lede">Pour les réseaux, le site et les e-mails. Elles alimentent le mois offert et la campagne de réservation anticipée.</p>
+  <div class="reel">
+    <figure class="clip big"><video src="vid/survol-etang-cast.mp4" poster="vid/survol-etang-cast.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>Survol de l'étang</figcaption></figure>
+    <figure class="clip"><video src="vid/entree-tente-cast.mp4" poster="vid/entree-tente-cast.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>La tente lodge</figcaption></figure>
+    <figure class="clip"><video src="vid/glissade-1.mp4" poster="vid/glissade-1.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>La glissade</figcaption></figure>
+    <figure class="clip"><video src="vid/vue-sur-snack.mp4" poster="vid/vue-sur-snack.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>Le snack</figcaption></figure>
+    <figure class="clip"><video src="vid/vue-gites.mp4" poster="vid/vue-gites.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>Les gîtes</figcaption></figure>
+    <figure class="clip"><video src="vid/service-snack-2.mp4" poster="vid/service-snack-2.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>Le service</figcaption></figure>
+    <figure class="clip"><video src="vid/vue-sur-voiturette.mp4" poster="vid/vue-sur-voiturette.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>La voiturette</figcaption></figure>
+    <figure class="clip"><video src="vid/drone-sortie-tente.mp4" poster="vid/drone-sortie-tente.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>Sous la toile</figcaption></figure>
+    <figure class="clip"><video src="vid/vue-sur-entre-e.mp4" poster="vid/vue-sur-entre-e.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>L'arrivée</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="ch" id="site"><div class="wrap">
+  <div class="head"><span class="num">05</span><h2 class="H">Le nouveau site</h2><p class="I">Une page qui donne envie, et qui vend en direct.</p></div>
+  <p class="lede">Cette maquette préfigure le futur site : les images du reportage, le fil rouge, et une réservation directe connectée au moteur du camping. Refonte complète proposée à 1 200 €.</p>
+  <div class="cards">
+    <article class="card"><div class="frame"><img src="img/p06413.jpg" alt="Chalet en bois avec terrasse couverte" loading="lazy"></div><div class="t"><span class="H">Mobil-homes</span><p>Éco, Confort ou Privilège, terrasses sous les arbres.</p><span class="go">Voir →</span></div></article>
+    <article class="card"><div class="frame"><img src="img/p06058.jpg" alt="Tente lodge et caravane sur une prairie" loading="lazy"></div><div class="t"><span class="H">Insolites</span><p>Tentes lodge et cabane sur pilotis, au plus près de la nature.</p><span class="go">Découvrir →</span></div></article>
+    <article class="card"><div class="frame"><img src="img/p06100.jpg" alt="Tente sur un emplacement ombragé" loading="lazy"></div><div class="t"><span class="H">Emplacements</span><p>Ombragés ou en prairie, tente, caravane ou camping-car.</p><span class="go">Choisir →</span></div></article>
+    <article class="card"><div class="frame"><img src="img/p06979.jpg" alt="Terrasse du snack animée sous les arbres" loading="lazy"></div><div class="t"><span class="H">La table</span><p>Pain livré au réveil, formules à commander la veille, soirées à thème.</p><span class="go">Ajouter →</span></div></article>
+  </div>
+  <div class="redo">
+    <div><span class="H">Mobile d'abord</span><span class="p">Là où se fait l'essentiel des recherches.</span></div>
+    <div><span class="H">Un bouton réserver</span><span class="p">Relié au moteur de réservation, sur chaque page.</span></div>
+    <div><span class="H">Options en ligne</span><span class="p">Petit-déjeuner, linge, vélos, apéro terroir dès la réservation.</span></div>
+    <div><span class="H">Quatre langues</span><span class="p">Français, néerlandais, allemand, anglais, selon la clientèle réelle.</span></div>
+    <div><span class="H">Référencement local</span><span class="p">Camping Lascaux, vallée de la Vézère, Sarlat.</span></div>
+    <div><span class="H">Cohérence</span><span class="p">Mêmes dates, photos et récit sur le site, Google et les plateformes.</span></div>
+  </div>
+</div></section>
+
+<section class="ch" id="chantiers" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">06</span><h2 class="H">L'accompagnement</h2><p class="I">On mesure, on vend tôt, puis on augmente le panier.</p></div>
+  <ol class="chs">
+    <li><span class="H">Audit des ventes</span><p>Part Maeva et part directe, dates de réservation, creux de remplissage, coût réel de chaque canal. Maeva apporte le remplissage de fond, le direct fidélise et remplit les ailes de saison.</p></li>
+    <li><span class="H">Base clients</span><p>Récupérer, nettoyer et segmenter l'historique, en vérifiant le consentement et le cadre contractuel des clients venus par Maeva.</p></li>
+    <li><span class="H">Early bird</span><ul><li>Novembre : accès prioritaire des fidèles à l'été 2027</li><li>Décembre : le séjour en bon cadeau de Noël</li><li>Janvier : relance avec les capsules et les nouveautés</li><li>Février à mars : dernier appel, ponts de mai et ailes de saison</li></ul></li>
+    <li><span class="H">Ventes additionnelles</span><p>Les prix du snack ne peuvent pas monter : on travaille la fréquence et le panier. Options à J-10, petit-déjeuner livré, commande la veille, paniers de producteurs, partenaires commissionnés, petite ligne textile aux couleurs du camping.</p></li>
+    <li><span class="H">Réseaux, un mois offert</span><p>Reprise des accès, ligne éditoriale, diffusion des capsules, puis bilan chiffré et méthode pour publier en autonomie.</p></li>
+    <li><span class="H">Site web</span><p>Audit, refonte selon le mood board, connexion au moteur de réservation si l'ensemble des accès est fourni.</p></li>
+    <li><span class="H">Territoire</span><p>Sites, prestataires, producteurs et acteurs institutionnels, avec ce que chacun apporte au client et au camping.</p></li>
+  </ol>
+  <div class="box"><span class="H">En parallèle</span><p>Un rendez-vous découverte avec une consultante de notre réseau, spécialisée en structuration financière et en financements publics, pour éclairer la trésorerie et les aides mobilisables avant les travaux.</p></div>
+</div></section>
+
+<section class="ch" id="calendrier" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">07</span><h2 class="H">Le calendrier</h2><p class="I">On vend la saison 2027 avant son ouverture.</p></div>
+  <div class="road">
+    <div class="phase"><span class="when">Novembre 2026</span><span class="H">Diagnostiquer</span><ul><li>Audit des ventes</li><li>Base clients</li><li>Fil rouge, mood board</li><li>Mois offert réseaux</li></ul></div>
+    <div class="phase key"><span class="when">Décembre à mars</span><span class="H">Vendre tôt</span><ul><li>Campagne early bird</li><li>Bons cadeaux de Noël</li><li>Refonte du site</li><li>Relances multilingues</li></ul></div>
+    <div class="phase"><span class="when">Avril à juin 2027</span><span class="H">Préparer</span><ul><li>Options avant l'arrivée</li><li>Accords partenaires</li><li>Nouvelle offre snack</li><li>Ailes de saison</li></ul></div>
+    <div class="phase"><span class="when">Juillet à septembre</span><span class="H">Vendre sur place</span><ul><li>Ventes additionnelles</li><li>Collecte des avis</li><li>Contenus clients</li><li>Fidélisation 2028</li></ul></div>
+  </div>
+  <div class="gates"><span>Fin novembre : bilan du mois offert</span><span>Fin mars : bilan de la campagne early bird</span></div>
+</div></section>
+
+<section class="ch" id="territoire" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">08</span><h2 class="H">Le territoire</h2><p class="I">La vallée de la Vézère, à la porte du camping.</p></div>
+  <div class="two">
+    <div class="dist">
+      <div><span>Le Thot, espace Cro-Magnon</span><span class="H">À pied</span></div>
+      <div><span>Montignac-Lascaux, Lascaux IV</span><span class="H">7 km</span></div>
+      <div><span>Sarlat-la-Canéda</span><span class="H">17 km</span></div>
+      <div><span>La Roque-Saint-Christophe, Les Eyzies</span><span class="I">dans la vallée</span></div>
+      <div><span>Canoë, marchés, producteurs</span><span class="I">partenaires à cartographier</span></div>
+    </div>
+    <figure style="margin:0">
+      <div class="frame" style="aspect-ratio:5/4"><img src="img/p06961.jpg" alt="Vacancière sur le chemin entre les chênes" loading="lazy"></div>
+      <figcaption class="cap"><b>Le chemin</b>entre chênes et prairies</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section class="ch" id="offre" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">09</span><h2 class="H">La proposition</h2><p class="I">Un socle modeste, une part liée aux résultats.</p></div>
+  <p class="lede">Montants indicatifs, à ajuster après l'atelier. La part variable porte uniquement sur les réservations directes tracées par les codes de campagne, jamais sur le chiffre d'affaires global du camping.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Volet</th><th>Contenu</th><th>Période</th><th>Montant</th></tr></thead>
+      <tbody>
+        <tr class="free"><td>Amorçage</td><td>Un mois de prise en main des réseaux sociaux, atelier fil rouge</td><td>Novembre 2026</td><td>Offert</td></tr>
+        <tr><td>Audit et stratégie</td><td>Audit des ventes et de la base clients, fil rouge, mood board, cartographie, plan d'action 2027, lancement early bird</td><td>Nov. à déc. 2026</td><td>1 200 €</td></tr>
+        <tr><td>Saison</td><td>Séquences e-mails, ventes additionnelles, réseaux sociaux, point mensuel de pilotage</td><td>Janv. à juin 2027</td><td>390 € / mois</td></tr>
+        <tr><td>Site web</td><td>Nouveau site selon le mood board, connecté au moteur de réservation</td><td>Avant février 2027</td><td>1 200 €</td></tr>
+        <tr><td>Variable</td><td>5 % des réservations directes portant un code de campagne, plafonnés à 1 500 €</td><td>Saison 2027</td><td>Selon résultats</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="total"><span class="small">Socle fixe total, en mensualités de novembre à juin<br>TVA non applicable, article 293 B du CGI</span><span class="H">4 740 €</span></div>
+
+  <div class="sig">
+    <video src="vid/etang-vu-du-ciel-1.mp4" poster="vid/etang-vu-du-ciel-1.jpg" muted loop playsinline preload="none" data-auto></video>
+    <div class="t">
+      <span class="lab">En option · nouveau format</span>
+      <h3 class="H">La vidéo signature</h3>
+      <p class="I tagline">Un récit du lieu, pas une vidéo de présentation.</p>
+      <p>Le camping a été photographié cette saison, la base visuelle existe. On propose d'en faire le premier lieu de ce nouveau format, écrit pendant l'hiver à partir du fil rouge et tourné au printemps, avant les périodes de forte fréquentation.</p>
+      <p>En contrepartie de conditions de lancement préférentielles, le film sert de référence pour présenter le format.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="ch" id="demarrer" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">10</span><h2 class="H">Pour démarrer</h2><p class="I">Ce qu'il nous faut dès la semaine prochaine.</p></div>
+  <ul class="check">
+    <li>Accès administrateur Facebook, Instagram et fiche Google</li>
+    <li>Accès au site : hébergement, domaine, back-office</li>
+    <li>Accès au logiciel et au moteur de réservation</li>
+    <li>Export de la base clients des trois dernières saisons</li>
+    <li>Outil d'envoi d'e-mails utilisé aujourd'hui</li>
+    <li>Ventes par canal et par mois : Maeva et direct</li>
+    <li>Conditions du contrat Maeva sur les données clients</li>
+    <li>Tarifs 2027 et calendrier d'ouverture validés</li>
+    <li>Chiffre d'affaires du snack et de l'épicerie</li>
+    <li>Travaux envisagés et budget estimé</li>
+    <li>Partenaires et prestataires locaux déjà en contact</li>
+  </ul>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><span class="H">David Rosemberg</span>Direction créative, photographie et vidéo · TOKELA Consulting</div>
+  <div style="text-align:right">Images et capsules © David Rosemberg, juillet 2026<br>Maquette de travail, non destinée à la diffusion publique</div>
+</div></footer>
+
+<script>
+(function(){
+  function fit(){var w=document.querySelector('.word');if(!w)return;w.style.fontSize='100px';var box=w.parentElement.clientWidth;var nat=w.scrollWidth;if(nat>0)w.style.fontSize=Math.min(box/nat*100*0.99,190)+'px';}
+  fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('resize',fit);
+})();
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids = document.querySelectorAll('video[data-auto]');
+  if (reduce) { vids.forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); v.controls = true; }); return; }
+  if (!('IntersectionObserver' in window)) { vids.forEach(function(v){ v.play().catch(function(){}); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; v.play().catch(function(){}); }
+      else v.pause();
+    });
+  }, {threshold: 0.25});
+  vids.forEach(function(v){ io.observe(v); });
+})();
+</script>
+
+</body>
+</html>
