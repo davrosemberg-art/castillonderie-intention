@@ -389,6 +389,24 @@ html.locked .gate{display:grid}
 .key p{font-size:14.5px;color:var(--ink-2);margin-top:4px}
 @media (max-width:860px){.key{grid-template-columns:repeat(2,minmax(0,1fr))}.key div{border-bottom:4px solid var(--ink)}}
 .end{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+.mind{margin-top:28px;border:4px solid var(--ink);background:var(--ink);color:var(--cream);padding:20px 24px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 28px;align-items:start}
+@media (max-width:700px){.mind{grid-template-columns:1fr}}
+.mind .H{font-size:clamp(28px,3.4vw,44px);color:var(--sun)}
+.mind ol{margin:0;padding-left:22px;display:grid;gap:6px;font-size:16px}
+.mind ol li::marker{font-family:var(--heavy);color:var(--sun)}
+.fam{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}
+@media (max-width:900px){.fam{grid-template-columns:1fr}}
+.fam > div{border-top:4px solid var(--ink);min-width:0}
+.fam h3{font-size:30px;padding-top:12px}
+.fam .I{font-size:19px;color:var(--ink-2);display:block;margin-top:2px}
+.fam ul{list-style:none;margin:12px 0 0;padding:0}
+.fam li{border-top:2px solid var(--ink);padding:10px 0}
+.fam li b{font-family:var(--heavy);font-weight:400;text-transform:uppercase;font-size:19px;letter-spacing:.02em;display:block}
+.fam li span{font-size:14.5px;color:var(--ink-2)}
+.fam li.star b::after{content:" ✶";color:var(--tomato)}
+.nope{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
+.nope .lab{margin-right:6px}
+.nope span.x{border:2px solid var(--ink);padding:4px 10px;font-size:14px;text-decoration:line-through;text-decoration-color:var(--tomato);text-decoration-thickness:2px}
 .sim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;margin-top:28px;border:4px solid var(--ink)}
 @media (max-width:860px){.sim{grid-template-columns:1fr}}
 .sim .in{padding:20px 22px;background:var(--cream);border-right:4px solid var(--ink);display:grid;gap:16px;min-width:0}
@@ -477,8 +495,40 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
   </div>
 </div></section>
 
+<section class="ch" id="objets" style="padding-top:0"><div class="wrap">
+  <div class="head"><span class="num">02</span><h2 class="H">La collection, objet par objet</h2><p class="I">Peu de pièces, toutes liées à ce qu'on vit ici.</p></div>
+  <div class="mind"><span class="H">Le filtre</span><ol>
+    <li>Est-ce qu'on le garderait, une fois rentré chez soi ?</li>
+    <li>Est-ce qu'il sert pendant le séjour ?</li>
+    <li>Est-ce qu'il raconte la vallée, l'étang, le pain, les chênes ?</li>
+    <li>Est-ce qu'il est beau sans le logo ?</li>
+  </ol></div>
+  <div class="fam">
+    <div><h3 class="H">À porter</h3><span class="I">La base de la collection, renouvelée chaque saison.</span><ul>
+      <li class="star"><b>Le t-shirt oversize</b><span>L'édition de l'année, sa couleur, la tente brodée.</span></li>
+      <li class="star"><b>La casquette</b><span>Coton lavé, pour la piscine et les visites.</span></li>
+      <li><b>Le sweat</b><span>Pour les soirées fraîches de mai, juin et septembre.</span></li>
+      <li><b>Le bob enfant</b><span>Les enfants le réclament, les parents l'achètent.</span></li>
+    </ul></div>
+    <div><h3 class="H">Pour le séjour</h3><span class="I">Utiles tout de suite, gardés longtemps.</span><ul>
+      <li class="star"><b>Le sac à pain</b><span>Une toile épaisse pour le pain du matin et le marché.</span></li>
+      <li><b>La serviette de piscine</b><span>Coton gaufré, aux couleurs de l'édition.</span></li>
+      <li><b>La tasse émaillée</b><span>Celle du café en terrasse, puis du bureau à la rentrée.</span></li>
+      <li><b>La gourde</b><span>Pour les randonnées et les visites de la vallée.</span></li>
+    </ul></div>
+    <div><h3 class="H">À rapporter</h3><span class="I">Les souvenirs qui prolongent le récit.</span><ul>
+      <li class="star"><b>Le tirage photo</b><span>La vallée vue par le reportage, en série limitée et numérotée.</span></li>
+      <li><b>La carte illustrée</b><span>Le camping et la vallée de la Vézère, du Thot à Sarlat.</span></li>
+      <li><b>Le carnet de séjour</b><span>Pour les enfants : l'étang, les animaux, la Préhistoire.</span></li>
+      <li><b>Le panier du Périgord</b><span>Les produits des partenaires locaux, réunis dans un coffret.</span></li>
+    </ul></div>
+  </div>
+  <div class="nope"><span class="lab">Ce qu'on ne fera pas</span><span class="x">Porte-clés en plastique</span><span class="x">Stylos publicitaires</span><span class="x">Mugs génériques</span><span class="x">Logo géant</span><span class="x">Gadgets jetables</span></div>
+  <p class="small" style="margin-top:12px">✶ Les pièces de lancement pour la première édition. Les autres s'ajoutent au fil des saisons, selon ce qui se vend.</p>
+</div></section>
+
 <section class="ch" id="parcours" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">02</span><h2 class="H">Où et quand la proposer</h2><p class="I">Six moments, du clic de réservation au retour à la maison.</p></div>
+  <div class="head"><span class="num">03</span><h2 class="H">Où et quand la proposer</h2><p class="I">Six moments, du clic de réservation au retour à la maison.</p></div>
   <ol class="path">
     <li><span class="when">À la réservation</span><span class="H">En option</span><p>La pièce de l'année proposée avec le petit-déjeuner et le linge, retirée à l'arrivée.</p></li>
     <li><span class="when">Dix jours avant</span><span class="H">L'e-mail d'avant-séjour</span><p>« Votre t-shirt vous attend » : précommande en un clic, taille choisie à l'avance.</p></li>
@@ -490,7 +540,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 </div></section>
 
 <section class="ch" id="regles" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">03</span><h2 class="H">Les bonnes règles</h2><p class="I">Ce qui fait la différence entre un souvenir et un objet oublié.</p></div>
+  <div class="head"><span class="num">04</span><h2 class="H">Les bonnes règles</h2><p class="I">Ce qui fait la différence entre un souvenir et un objet oublié.</p></div>
   <div class="dos">
     <div><span class="H">La qualité d'abord</span><p>Coton épais, coupe actuelle, couleurs choisies avec le mood board. Mieux vaut deux belles pièces que dix produits moyens.</p></div>
     <div><span class="H">Montrer porté</span><p>L'équipe porte la collection, les photos clients alimentent les réseaux. Un objet se vend quand on le voit vivre.</p></div>
@@ -500,7 +550,7 @@ crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){don
 </div></section>
 
 <section class="ch" id="chiffres" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">04</span><h2 class="H">Ce que ça peut rapporter</h2><p class="I">Une hypothèse simple, à vérifier avec les chiffres du camping.</p></div>
+  <div class="head"><span class="num">05</span><h2 class="H">Ce que ça peut rapporter</h2><p class="I">Une hypothèse simple, à vérifier avec les chiffres du camping.</p></div>
   <p class="lede">Faites varier les hypothèses : la marge se calcule toute seule. Les valeurs de départ sont des ordres de grandeur, pas des engagements.</p>
   <div class="sim" id="sim">
     <div class="in">
@@ -532,7 +582,7 @@ g('o-sent').textContent='Soit '+f(u)+' pièces vendues sur '+f(fr)+' vacanciers.
 ['s-freq','s-rate','s-price','s-cost'].forEach(function(i){g(i).addEventListener('input',run)});run();})();</script>
 
 <section class="ch" id="cle-en-main" style="padding-top:0"><div class="wrap">
-  <div class="head"><span class="num">05</span><h2 class="H">Clé en main</h2><p class="I">Le camping n'a rien à gérer, sinon à la proposer.</p></div>
+  <div class="head"><span class="num">06</span><h2 class="H">Clé en main</h2><p class="I">Le camping n'a rien à gérer, sinon à la proposer.</p></div>
   <div class="key">
     <div><span class="H">Création</span><p>Logo, couleurs de l'édition, dessin des pièces.</p></div>
     <div><span class="H">Production</span><p>Fabrication en petite série ou à la demande, sans stock à porter.</p></div>
